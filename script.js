@@ -1,1165 +1,550 @@
-/* =====================================================
-                    HELPERS
-===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
 
-const $ = selector =>
-    document.querySelector(selector);
+    /* =========================
+       LOADER
+    ========================== */
 
-const $$ = selector =>
-    document.querySelectorAll(selector);
+    const loader = document.getElementById("loader");
+    const loaderNumber = document.getElementById("loaderNumber");
 
+    let loadingValue = 0;
 
+    const loaderInterval = setInterval(() => {
 
-/* =====================================================
-                    MOBILE MENU
-===================================================== */
+        loadingValue += Math.floor(Math.random() * 12) + 5;
 
-const menuToggle =
-    $("#menu-toggle");
+        if (loadingValue >= 100) {
+            loadingValue = 100;
+            clearInterval(loaderInterval);
 
-const navLinks =
-    $("#nav-links");
-
-
-if (menuToggle) {
-
-    menuToggle.addEventListener(
-        "click",
-        () => {
-
-            navLinks.classList.toggle(
-                "open"
-            );
-
-            const icon =
-                menuToggle.querySelector("i");
-
-            icon.classList.toggle(
-                "fa-bars"
-            );
-
-            icon.classList.toggle(
-                "fa-xmark"
-            );
-
-        }
-    );
-
-}
-
-
-$$(".nav-links a").forEach(
-    link => {
-
-        link.addEventListener(
-            "click",
-            () => {
-
-                navLinks.classList.remove(
-                    "open"
-                );
-
-                const icon =
-                    menuToggle.querySelector("i");
-
-                icon.classList.add(
-                    "fa-bars"
-                );
-
-                icon.classList.remove(
-                    "fa-xmark"
-                );
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-                    HERO TYPING
-===================================================== */
-
-const typingText =
-    $("#typing-text");
-
-
-const roles = [
-
-    "Java applications",
-    "backend systems",
-    "REST APIs",
-    "secure software"
-
-];
-
-
-let roleIndex = 0;
-
-let charIndex = 0;
-
-let deleting = false;
-
-
-function typeHero() {
-
-    const current =
-        roles[roleIndex];
-
-
-    typingText.textContent =
-        current.substring(
-            0,
-            charIndex
-        );
-
-
-    if (!deleting) {
-
-        charIndex++;
-
-
-        if (
-            charIndex >
-            current.length
-        ) {
-
-            deleting = true;
-
-            setTimeout(
-                typeHero,
-                1200
-            );
-
-            return;
-
+            setTimeout(() => {
+                loader.classList.add("hide");
+            }, 300);
         }
 
-    } else {
+        loaderNumber.textContent =
+            String(loadingValue).padStart(2, "0");
 
-        charIndex--;
+    }, 120);
 
 
-        if (charIndex < 0) {
+    /* =========================
+       NAVBAR
+    ========================== */
 
-            charIndex = 0;
+    const nav = document.getElementById("nav");
 
-            deleting = false;
+    function updateNav() {
 
-            roleIndex =
-                (roleIndex + 1)
-                % roles.length;
-
+        if (window.scrollY > 40) {
+            nav.classList.add("scrolled");
+        } else {
+            nav.classList.remove("scrolled");
         }
 
     }
 
-
-    setTimeout(
-        typeHero,
-        deleting ? 45 : 80
-    );
-
-}
+    window.addEventListener("scroll", updateNav);
+    updateNav();
 
 
-typeHero();
+    /* =========================
+       MOBILE MENU
+    ========================== */
 
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.querySelector(".nav-links");
 
+    menuBtn.addEventListener("click", () => {
 
-/* =====================================================
-                    TERMINAL
-===================================================== */
+        navLinks.classList.toggle("open");
 
-const commandElement =
-    $("#typing-command");
+        const opened = navLinks.classList.contains("open");
 
-
-const commands = [
-
-    "ship --production",
-    "git push origin main",
-    "build --clean",
-    "solve --problem"
-
-];
-
-
-let commandIndex = 0;
-
-let commandChar = 0;
-
-let commandDeleting = false;
-
-
-function typeCommand() {
-
-    const command =
-        commands[commandIndex];
-
-
-    commandElement.textContent =
-        command.substring(
-            0,
-            commandChar
+        menuBtn.setAttribute(
+            "aria-label",
+            opened ? "Close menu" : "Open menu"
         );
 
+    });
 
-    if (!commandDeleting) {
+    document.querySelectorAll(".nav-links a").forEach(link => {
 
-        commandChar++;
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("open");
+        });
 
-
-        if (
-            commandChar >
-            command.length
-        ) {
-
-            commandDeleting = true;
-
-            setTimeout(
-                typeCommand,
-                900
-            );
-
-            return;
-
-        }
-
-    } else {
-
-        commandChar--;
+    });
 
 
-        if (commandChar < 0) {
+    /* =========================
+       ACTIVE NAV
+    ========================== */
 
-            commandChar = 0;
+    const sections = document.querySelectorAll("section[id]");
+    const navigationLinks = document.querySelectorAll(".nav-links a");
 
-            commandDeleting = false;
+    const navObserver = new IntersectionObserver(
+        entries => {
 
-            commandIndex =
-                (commandIndex + 1)
-                % commands.length;
+            entries.forEach(entry => {
 
-        }
+                if (!entry.isIntersecting) return;
 
-    }
+                navigationLinks.forEach(link => {
+                    link.classList.remove("active");
+                });
 
+                const activeLink =
+                    document.querySelector(
+                        `.nav-links a[href="#${entry.target.id}"]`
+                    );
 
-    setTimeout(
-        typeCommand,
-        commandDeleting ? 35 : 70
-    );
-
-}
-
-
-typeCommand();
-
-
-
-/* =====================================================
-                    SCROLL REVEAL
-===================================================== */
-
-const revealObserver =
-    new IntersectionObserver(
-
-        (entries, observer) => {
-
-            entries.forEach(
-                entry => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "show"
-                        );
-
-
-                        const bars =
-                            entry.target.querySelectorAll(
-                                ".bar span"
-                            );
-
-
-                        bars.forEach(
-                            bar => {
-
-                                bar.style.width =
-                                    bar.dataset.width;
-
-                            }
-                        );
-
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
+                if (activeLink) {
+                    activeLink.classList.add("active");
                 }
-            );
+
+            });
 
         },
-
         {
-            threshold:
-                0.12
+            rootMargin: "-35% 0px -55% 0px"
         }
-
     );
 
-
-$$(".reveal").forEach(
-    element => {
-
-        revealObserver.observe(
-            element
-        );
-
-    }
-);
+    sections.forEach(section => {
+        navObserver.observe(section);
+    });
 
 
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
 
-/* =====================================================
-                    ACTIVE NAV
-===================================================== */
+    const revealElements =
+        document.querySelectorAll(".reveal");
 
-const sections =
-    $$("section");
+    const revealObserver = new IntersectionObserver(
+        entries => {
 
-const navItems =
-    $$(".nav-links a");
+            entries.forEach((entry, index) => {
 
+                if (!entry.isIntersecting) return;
 
-window.addEventListener(
-    "scroll",
-    () => {
+                setTimeout(() => {
+                    entry.target.classList.add("show");
+                }, index * 45);
 
-        let current =
-            "home";
+                revealObserver.unobserve(entry.target);
 
+            });
 
-        sections.forEach(
-            section => {
-
-                if (
-                    window.scrollY >=
-                    section.offsetTop - 180
-                ) {
-
-                    current =
-                        section.id;
-
-                }
-
-            }
-        );
-
-
-        navItems.forEach(
-            link => {
-
-                link.classList.toggle(
-
-                    "active",
-
-                    link.getAttribute(
-                        "href"
-                    ) === `#${current}`
-
-                );
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-                    SCROLL TOP
-===================================================== */
-
-const scrollTop =
-    $("#scroll-top");
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if (
-            window.scrollY > 600
-        ) {
-
-            scrollTop.classList.add(
-                "show"
-            );
-
-        } else {
-
-            scrollTop.classList.remove(
-                "show"
-            );
-
+        },
+        {
+            threshold: 0.12
         }
+    );
 
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+
+
+    /* =========================
+       CUSTOM CURSOR
+    ========================== */
+
+    const cursor = document.querySelector(".cursor");
+    const cursorDot = document.querySelector(".cursor-dot");
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    let cursorX = mouseX;
+    let cursorY = mouseY;
+
+    document.addEventListener("mousemove", event => {
+
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+
+    });
+
+    function animateCursor() {
+
+        cursorX += (mouseX - cursorX) * 0.13;
+        cursorY += (mouseY - cursorY) * 0.13;
+
+        cursor.style.left = `${cursorX}px`;
+        cursor.style.top = `${cursorY}px`;
+
+        requestAnimationFrame(animateCursor);
     }
-);
+
+    animateCursor();
 
 
-scrollTop.addEventListener(
-    "click",
-    () => {
+    document.querySelectorAll("a, button, .skill-chip").forEach(element => {
 
-        window.scrollTo({
+        element.addEventListener("mouseenter", () => {
+            cursor.classList.add("active");
+        });
 
-            top:
-                0,
+        element.addEventListener("mouseleave", () => {
+            cursor.classList.remove("active");
+        });
 
-            behavior:
-                "smooth"
+    });
+
+
+    /* =========================
+       MAGNETIC BUTTONS
+    ========================== */
+
+    document.querySelectorAll(".magnetic").forEach(element => {
+
+        element.addEventListener("mousemove", event => {
+
+            const rect = element.getBoundingClientRect();
+
+            const x =
+                event.clientX -
+                rect.left -
+                rect.width / 2;
+
+            const y =
+                event.clientY -
+                rect.top -
+                rect.height / 2;
+
+            element.style.transform =
+                `translate(${x * 0.08}px, ${y * 0.08}px)`;
+
+        });
+
+        element.addEventListener("mouseleave", () => {
+
+            element.style.transform = "";
+
+        });
+
+    });
+
+
+    /* =========================
+       HERO PARALLAX
+    ========================== */
+
+    const hero = document.querySelector(".hero");
+    const stackItems =
+        document.querySelectorAll(".hero-stack [data-speed]");
+
+    if (hero && window.innerWidth > 800) {
+
+        hero.addEventListener("mousemove", event => {
+
+            const rect = hero.getBoundingClientRect();
+
+            const x =
+                (event.clientX - rect.left) /
+                rect.width - 0.5;
+
+            const y =
+                (event.clientY - rect.top) /
+                rect.height - 0.5;
+
+            stackItems.forEach(item => {
+
+                const speed =
+                    parseFloat(item.dataset.speed || "0");
+
+                const moveX = x * speed * 100;
+                const moveY = y * speed * 100;
+
+                item.style.marginLeft = `${moveX}px`;
+                item.style.marginTop = `${moveY}px`;
+
+            });
+
+        });
+
+        hero.addEventListener("mouseleave", () => {
+
+            stackItems.forEach(item => {
+                item.style.marginLeft = "";
+                item.style.marginTop = "";
+            });
 
         });
 
     }
-);
 
 
+    /* =========================
+       PHOTO 3D TILT
+    ========================== */
 
-/* =====================================================
-                    CURSOR GLOW
-===================================================== */
+    const photoCard =
+        document.querySelector(".stack-photo");
 
-const cursorGlow =
-    $("#cursor-glow");
+    if (photoCard && window.innerWidth > 800) {
 
+        photoCard.addEventListener("mousemove", event => {
 
-window.addEventListener(
-    "pointermove",
-    event => {
+            const rect = photoCard.getBoundingClientRect();
 
-        cursorGlow.style.left =
-            `${event.clientX}px`;
+            const x =
+                (event.clientX - rect.left) /
+                rect.width;
 
-        cursorGlow.style.top =
-            `${event.clientY}px`;
+            const y =
+                (event.clientY - rect.top) /
+                rect.height;
 
-    }
-);
+            const rotateY = (x - 0.5) * 10;
+            const rotateX = (0.5 - y) * 10;
 
+            photoCard.style.transform =
+                `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-5px)`;
 
+        });
 
-/* =====================================================
-                    3D HERO TILT
-===================================================== */
+        photoCard.addEventListener("mouseleave", () => {
 
-const tiltCard =
-    $("#tilt-card");
+            photoCard.style.transform =
+                "rotate(-2.5deg)";
 
-
-window.addEventListener(
-    "pointermove",
-    event => {
-
-        if (
-            window.innerWidth < 900
-        ) {
-
-            return;
-
-        }
-
-
-        const rect =
-            tiltCard.getBoundingClientRect();
-
-
-        if (
-
-            event.clientX < rect.left ||
-
-            event.clientX > rect.right ||
-
-            event.clientY < rect.top ||
-
-            event.clientY > rect.bottom
-
-        ) {
-
-            return;
-
-        }
-
-
-        const x =
-            (
-                event.clientX -
-                rect.left
-            ) / rect.width;
-
-
-        const y =
-            (
-                event.clientY -
-                rect.top
-            ) / rect.height;
-
-
-        const rotateY =
-            (x - 0.5) * 10;
-
-
-        const rotateX =
-            (0.5 - y) * 8;
-
-
-        tiltCard.style.transform =
-
-            `perspective(900px)
-             rotateX(${rotateX}deg)
-             rotateY(${rotateY}deg)
-             translateZ(8px)`;
+        });
 
     }
-);
 
 
-tiltCard.addEventListener(
-    "mouseleave",
-    () => {
+    /* =========================
+       SCROLL PROGRESS
+    ========================== */
 
-        tiltCard.style.transform =
-            "";
+    const progress =
+        document.getElementById("scrollProgress");
 
-    }
-);
+    function updateProgress() {
 
+        const scrollTop = window.scrollY;
 
+        const height =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
 
-/* =====================================================
-                    DARK / LIGHT MODE
-===================================================== */
+        const percentage =
+            height > 0
+                ? (scrollTop / height) * 100
+                : 0;
 
-const themeToggle =
-    $("#theme-toggle");
-
-
-const savedTheme =
-    localStorage.getItem(
-        "portfolio-theme"
-    );
-
-
-if (
-    savedTheme === "light"
-) {
-
-    document.body.classList.add(
-        "light"
-    );
-
-}
-
-
-function updateThemeIcon() {
-
-    const icon =
-        themeToggle.querySelector(
-            "i"
-        );
-
-
-    if (
-        document.body.classList.contains(
-            "light"
-        )
-    ) {
-
-        icon.classList.remove(
-            "fa-moon"
-        );
-
-        icon.classList.add(
-            "fa-sun"
-        );
-
-    } else {
-
-        icon.classList.remove(
-            "fa-sun"
-        );
-
-        icon.classList.add(
-            "fa-moon"
-        );
+        progress.style.width = `${percentage}%`;
 
     }
 
-}
+    window.addEventListener("scroll", updateProgress);
+
+    updateProgress();
 
 
-updateThemeIcon();
+    /* =========================
+       THEME TOGGLE
+    ========================== */
 
+    const themeBtn =
+        document.getElementById("themeBtn");
 
-themeToggle.addEventListener(
-    "click",
-    () => {
+    const savedTheme =
+        localStorage.getItem("kritika-theme");
 
-        document.body.classList.toggle(
-            "light"
-        );
+    if (savedTheme === "light") {
+        document.body.classList.add("light");
+    }
 
+    themeBtn.addEventListener("click", () => {
 
-        const theme =
+        document.body.classList.toggle("light");
 
-            document.body.classList.contains(
-                "light"
-            )
-
-                ? "light"
-
-                : "dark";
-
+        const isLight =
+            document.body.classList.contains("light");
 
         localStorage.setItem(
-            "portfolio-theme",
-            theme
+            "kritika-theme",
+            isLight ? "light" : "dark"
         );
 
+    });
 
-        updateThemeIcon();
 
-    }
-);
+    /* =========================
+       CONTACT FORM
+    ========================== */
 
+    const form =
+        document.getElementById("contactForm");
 
+    const submitBtn =
+        document.getElementById("submitBtn");
 
-/* =====================================================
-                    PROJECT MODAL
-===================================================== */
+    const formStatus =
+        document.getElementById("formStatus");
 
-const projectModal =
-    $("#project-modal");
-
-const closeProject =
-    $("#close-project");
-
-const projectOverlay =
-    $("#project-overlay");
-
-const modalTitle =
-    $("#modal-project-title");
-
-const modalDescription =
-    $("#modal-project-description");
-
-const modalLabel =
-    $("#modal-project-label");
-
-const modalFeatures =
-    $("#modal-project-features");
-
-const modalTech =
-    $("#modal-project-tech");
-
-const modalIcon =
-    $("#modal-project-icon");
-
-const modalGithub =
-    $("#modal-github");
-
-
-
-const projects = {
-
-
-    /* ================= URL SHORTENER ================= */
-
-    url: {
-
-        title:
-            "URL Shortener",
-
-        label:
-            "BACKEND APPLICATION",
-
-        description:
-
-            "A secure database-driven URL Shortener built with Spring Boot, MVC architecture, authentication, authorization, analytics and URL management.",
-
-        icon:
-            "fa-solid fa-link",
-
-        github:
-
-            "https://github.com/KritikaaSinghh/kritika-url-shortener",
-
-
-        features: [
-
-            "Authentication & Authorization",
-
-            "Role-Based Access",
-
-            "Private URLs & Expiration",
-
-            "Analytics Dashboard",
-
-            "Flyway Database Migrations",
-
-            "Docker PostgreSQL"
-
-        ],
-
-
-        tech: [
-
-            "Java",
-
-            "Spring Boot",
-
-            "Spring Security",
-
-            "JPA",
-
-            "PostgreSQL",
-
-            "Docker"
-
-        ]
-
-    },
-
-
-    /* ================= SORTING ================= */
-
-    sorting: {
-
-        title:
-            "Sorting Visualizer",
-
-        label:
-            "INTERACTIVE WEB APP",
-
-        description:
-
-            "An interactive visualizer that demonstrates popular sorting algorithms through animations, controls and complexity information.",
-
-        icon:
-            "fa-solid fa-chart-simple",
-
-        github:
-
-            "https://github.com/KritikaaSinghh/Sorting-Visualizer",
-
-
-        features: [
-
-            "Bubble Sort",
-
-            "Selection Sort",
-
-            "Insertion Sort",
-
-            "Merge Sort",
-
-            "Quick Sort",
-
-            "Complexity Display"
-
-        ],
-
-
-        tech: [
-
-            "HTML",
-
-            "CSS",
-
-            "JavaScript"
-
-        ]
-
-    }
-
-};
-
-
-
-/* ================= OPEN PROJECT ================= */
-
-$$(".project-preview").forEach(
-    button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-
-                const key =
-                    button.dataset.project;
-
-
-                const project =
-                    projects[key];
-
-
-                if (!project) {
-
-                    return;
-
-                }
-
-
-                modalTitle.textContent =
-                    project.title;
-
-
-                modalLabel.textContent =
-                    project.label;
-
-
-                modalDescription.textContent =
-                    project.description;
-
-
-                modalIcon.innerHTML =
-
-                    `<i class="${project.icon}"></i>`;
-
-
-                modalFeatures.innerHTML =
-
-                    project.features
-                        .map(
-
-                            feature =>
-
-                                `<span>
-                                    <i class="fa-solid fa-check"></i>
-                                    ${feature}
-                                </span>`
-
-                        )
-                        .join("");
-
-
-                modalTech.innerHTML =
-
-                    project.tech
-                        .map(
-
-                            tech =>
-                                `<span>${tech}</span>`
-
-                        )
-                        .join("");
-
-
-                modalGithub.href =
-                    project.github;
-
-
-                projectModal.classList.add(
-                    "active"
-                );
-
-
-                document.body.style.overflow =
-                    "hidden";
-
-            }
-        );
-
-    }
-);
-
-
-
-function closeProjectModal() {
-
-    projectModal.classList.remove(
-        "active"
-    );
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-closeProject.addEventListener(
-    "click",
-    closeProjectModal
-);
-
-
-projectOverlay.addEventListener(
-    "click",
-    closeProjectModal
-);
-
-
-
-/* =====================================================
-                    CONTACT MODAL
-===================================================== */
-
-const contactModal =
-    $("#contact-modal");
-
-const openContact =
-    $("#open-contact");
-
-const closeContact =
-    $("#close-contact");
-
-const contactOverlay =
-    $("#contact-overlay");
-
-
-function closeContactModal() {
-
-    contactModal.classList.remove(
-        "active"
-    );
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-openContact.addEventListener(
-    "click",
-    () => {
-
-        contactModal.classList.add(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-);
-
-
-closeContact.addEventListener(
-    "click",
-    closeContactModal
-);
-
-
-contactOverlay.addEventListener(
-    "click",
-    closeContactModal
-);
-
-
-
-/* =====================================================
-                    ESCAPE KEY
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key !== "Escape"
-        ) {
-
-            return;
-
-        }
-
-
-        closeProjectModal();
-
-        closeContactModal();
-
-    }
-);
-
-
-
-/* =====================================================
-                    FORMSPREE
-===================================================== */
-
-const contactForm =
-    $("#contact-form");
-
-
-contactForm.addEventListener(
-    "submit",
-    async event => {
+    form.addEventListener("submit", async event => {
 
         event.preventDefault();
 
-
-        const button =
-            contactForm.querySelector(
-                ".modal-send-btn"
-            );
-
-
         const originalText =
-            button.innerHTML;
+            submitBtn.querySelector("span").textContent;
 
+        submitBtn.disabled = true;
 
-        button.disabled =
-            true;
+        submitBtn.querySelector("span").textContent =
+            "Sending...";
 
+        formStatus.textContent = "";
 
-        button.innerHTML =
+        const formData =
+            new FormData(form);
 
-            'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
-
+        const data =
+            Object.fromEntries(formData.entries());
 
         try {
 
+            const response = await fetch(
+                "https://formsubmit.co/ajax/singhkritika8449@gmail.com",
+                {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                }
+            );
 
-            const response =
-                await fetch(
+            const result =
+                await response.json();
 
-                    contactForm.action,
+            if (response.ok && result.success) {
 
-                    {
+                formStatus.textContent =
+                    "Message sent successfully ✓";
 
-                        method:
-                            "POST",
+                formStatus.style.color =
+                    "#b993ff";
 
-                        body:
-                            new FormData(
-                                contactForm
-                            ),
+                form.reset();
 
-                        headers: {
+            } else {
 
-                            "Accept":
-                                "application/json"
-
-                        }
-
-                    }
-
-                );
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Form submission failed"
-                );
+                throw new Error("Form submission failed");
 
             }
 
-
-            contactForm.reset();
-
-
-            button.innerHTML =
-
-                'Message Sent <i class="fa-solid fa-check"></i>';
-
-
-            button.style.background =
-                "#16a34a";
-
-
-            setTimeout(
-                () => {
-
-
-                    closeContactModal();
-
-
-                    button.innerHTML =
-                        originalText;
-
-
-                    button.style.background =
-                        "";
-
-
-                    button.disabled =
-                        false;
-
-
-                },
-
-                1600
-            );
-
-
         } catch (error) {
 
+            console.error(error);
 
-            console.error(
-                error
-            );
+            formStatus.textContent =
+                "Couldn't send — please try again.";
 
+            formStatus.style.color =
+                "#ff8f9f";
 
-            button.innerHTML =
+        } finally {
 
-                'Something went wrong <i class="fa-solid fa-xmark"></i>';
+            submitBtn.disabled = false;
 
-
-            button.style.background =
-                "#dc2626";
-
-
-            setTimeout(
-                () => {
-
-
-                    button.innerHTML =
-                        originalText;
-
-
-                    button.style.background =
-                        "";
-
-
-                    button.disabled =
-                        false;
-
-
-                },
-
-                2300
-            );
+            submitBtn.querySelector("span").textContent =
+                originalText;
 
         }
 
-    }
-);
+    });
 
 
+    /* =========================
+       YEAR
+    ========================== */
 
-/* =====================================================
-                    CURRENT YEAR
-===================================================== */
-
-const year =
-    $("#year");
-
-
-if (year) {
-
-    year.textContent =
+    document.getElementById("year").textContent =
         new Date().getFullYear();
 
-}
+
+    /* =========================
+       SMOOTH INTERNAL LINKS
+    ========================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            const targetId =
+                link.getAttribute("href");
+
+            if (!targetId || targetId === "#") {
+                return;
+            }
+
+            const target =
+                document.querySelector(targetId);
+
+            if (!target) {
+                return;
+            }
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+    });
+
+
+    /* =========================
+       PROJECT HOVER GLOW
+    ========================== */
+
+    document.querySelectorAll(".project-card").forEach(card => {
+
+        card.addEventListener("mousemove", event => {
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            card.style.background =
+                `radial-gradient(
+                    circle at ${x}px ${y}px,
+                    rgba(166,108,255,.07),
+                    transparent 35%
+                )`;
+
+        });
+
+        card.addEventListener("mouseleave", () => {
+
+            card.style.background = "";
+
+        });
+
+    });
+
+});

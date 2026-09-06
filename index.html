@@ -1,1756 +1,837 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Kritika Singh - Software Engineer, Java Developer and Backend Developer">
+          content="Kritika Singh — Software Engineer focused on Java, Spring Boot and Backend Development.">
 
     <title>Kritika Singh | Software Engineer</title>
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <link rel="stylesheet"
-          href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-<div class="page-bg"></div>
-
+<div class="page-glow glow-one"></div>
+<div class="page-glow glow-two"></div>
 <div class="noise"></div>
 
-<div class="cursor-glow"
-     id="cursor-glow"></div>
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
 
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- ================= HEADER ================= -->
+<!-- LOADER -->
+<div class="loader" id="loader">
+    <div class="loader-number" id="loaderNumber">00</div>
+    <div class="loader-line">
+        <span></span>
+    </div>
+    <p>INITIALIZING PORTFOLIO</p>
+</div>
 
-<header class="header">
+<!-- NAVBAR -->
+<header class="nav" id="nav">
 
-    <nav class="navbar">
+    <a href="#home" class="brand">
+        K<span>.</span>
+    </a>
 
-        <a href="#home"
-           class="logo">
+    <nav class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#build">How I Build</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-            <span>K</span>ritika
-            <span class="logo-dot">.</span>
+    <div class="nav-actions">
 
-        </a>
-
-
-        <button class="menu-toggle"
-                id="menu-toggle"
-                aria-label="Open menu">
-
-            <i class="fa-solid fa-bars"></i>
-
+        <button class="theme-btn magnetic" id="themeBtn" aria-label="Toggle theme">
+            ◐
         </button>
 
+        <a href="#contact" class="talk-btn magnetic">
+            Let's Talk
+            <span>↗</span>
+        </a>
 
-        <ul class="nav-links"
-            id="nav-links">
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+            <span></span>
+            <span></span>
+        </button>
 
-            <li>
-                <a href="#home"
-                   class="active">
-                    Home
-                </a>
-            </li>
-
-            <li>
-                <a href="#about">
-                    About
-                </a>
-            </li>
-
-            <li>
-                <a href="#skills">
-                    Skills
-                </a>
-            </li>
-
-            <li>
-                <a href="#projects">
-                    Projects
-                </a>
-            </li>
-
-            <li>
-                <a href="#process">
-                    How I Build
-                </a>
-            </li>
-
-            <li>
-                <a href="#github">
-                    GitHub
-                </a>
-            </li>
-
-            <li>
-                <a href="#certifications">
-                    Certifications
-                </a>
-            </li>
-
-            <li>
-                <a href="#education">
-                    Education
-                </a>
-            </li>
-
-            <li>
-                <a href="#contact">
-                    Contact
-                </a>
-            </li>
-
-        </ul>
-
-
-        <div class="nav-actions">
-
-            <button class="theme-toggle"
-                    id="theme-toggle"
-                    aria-label="Toggle theme">
-
-                <i class="fa-solid fa-moon"></i>
-
-            </button>
-
-
-            <a href="#contact"
-               class="nav-cta">
-
-                Let's Talk
-
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-            </a>
-
-        </div>
-
-    </nav>
+    </div>
 
 </header>
 
-
-
 <main>
-
 
     <!-- ================= HERO ================= -->
 
-    <section class="hero section"
-             id="home">
+    <section class="hero" id="home">
 
+        <div class="hero-grid"></div>
 
+        <div class="hero-noise"></div>
+
+        <!-- BACKGROUND TYPOGRAPHY -->
+        <div class="hero-watermark">
+            <span>SOFTWARE</span>
+            <strong>BACKEND</strong>
+        </div>
+
+        <!-- LEFT CONTENT -->
         <div class="hero-copy reveal">
 
-
-            <div class="availability">
-
+            <div class="eyebrow">
                 <span></span>
-
-                Open to opportunities
-
+                SOFTWARE ENGINEER · JAVA / BACKEND
             </div>
-
-
-            <p class="eyebrow">
-                HELLO, I'M
-            </p>
-
 
             <h1>
-
                 Kritika
-                <span>Singh</span><b>.</b>
-
+                <em>Singh.</em>
             </h1>
 
-
-            <h2>
-
-                I build
-
-                <span id="typing-text">
-                Java applications
-            </span>
-
-                <i></i>
-
-            </h2>
-
-
-            <p class="hero-description">
-
-                Software Engineer focused on Java,
-                Spring Boot and backend development.
-                I build clean, secure and scalable
-                applications with a strong foundation
-                in OOP, DSA and SQL.
-
+            <p class="hero-intro">
+                I build reliable backend systems, REST APIs and clean Java
+                applications with a strong focus on problem solving and
+                scalable architecture.
             </p>
 
+            <div class="hero-buttons">
 
-            <div class="hero-actions">
-
-                <a href="#projects"
-                   class="btn btn-primary">
-
-                    Explore my work
-
-                    <i class="fa-solid fa-arrow-down"></i>
-
+                <a href="#projects" class="primary-btn magnetic">
+                    View my work
+                    <span>↗</span>
                 </a>
 
-
-                <a href="#contact"
-                   class="btn btn-ghost">
-
-                    Let's connect
-
-                    <i class="fa-regular fa-paper-plane"></i>
-
+                <a href="#about" class="text-btn">
+                    More about me
+                    <span>↓</span>
                 </a>
 
             </div>
 
+            <div class="hero-stats">
 
-            <div class="social-row">
+                <div>
+                    <strong>02+</strong>
+                    <span>Projects</span>
+                </div>
 
-                <a href="https://github.com/KritikaaSinghh"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <div>
+                    <strong>07</strong>
+                    <span>Certifications</span>
+                </div>
 
-                    <i class="fa-brands fa-github"></i>
-                    GitHub
-
-                </a>
-
-
-                <a href="https://www.linkedin.com/in/kritikaasinghh"
-                   target="_blank"
-                   rel="noopener noreferrer">
-
-                    <i class="fa-brands fa-linkedin"></i>
-                    LinkedIn
-
-                </a>
-
-
-                <a href="mailto:singhkritika8449@gmail.com">
-
-                    <i class="fa-solid fa-envelope"></i>
-                    Email
-
-                </a>
+                <div>
+                    <strong>Java</strong>
+                    <span>Primary Language</span>
+                </div>
 
             </div>
 
         </div>
 
 
+        <!-- RIGHT LAYERED VISUAL -->
+        <div class="hero-stack">
 
-        <!-- HERO TERMINAL -->
+            <!-- Decorative glow -->
+            <div class="visual-glow"></div>
 
-        <div class="hero-visual reveal">
+            <!-- Orbit -->
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
 
+            <!-- BACK CODE CARD -->
+            <div class="stack-card stack-code" data-speed="-0.18">
 
-            <div class="hero-orbit orbit-one"></div>
-
-            <div class="hero-orbit orbit-two"></div>
-
-
-            <div class="terminal-wrap"
-                 id="tilt-card">
-
-
-                <div class="terminal">
-
-
-                    <div class="terminal-bar">
-
-
-                        <div class="terminal-dots">
-
-                            <span></span>
-                            <span></span>
-                            <span></span>
-
-                        </div>
-
-
-                        <div class="terminal-name">
-
-                            <i class="fa-solid fa-terminal"></i>
-
-                            kritika@developer ~
-
-                        </div>
-
-
-                        <div class="terminal-status">
-
-                            ● online
-
-                        </div>
-
+                <div class="window-top">
+                    <div class="window-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
 
+                    <small>Backend.java</small>
+                </div>
+
+                <pre><code><b>public class</b> <i>Kritika</i> {
+
+    String role = <strong>"Software Engineer"</strong>;
+    String stack = <strong>"Java + Spring Boot"</strong>;
+    String focus = <strong>"Backend Systems"</strong>;
+
+    <b>void</b> build() {
+        learn();
+        solve();
+        ship();
+    }
+
+}</code></pre>
+
+                <div class="code-glow"></div>
+
+            </div>
 
 
-                    <div class="terminal-body">
+            <!-- SMALL BACK IDEAS CARD -->
+            <div class="ideas-card" data-speed="0.16">
 
+                <span class="ideas-star">✦</span>
 
-                        <div>
+                <div class="ideas-title">BUILDING<br>WITH INTENT</div>
 
-                        <span class="prompt">
-                            ❯
-                        </span>
-
-                            whoami
-
-                        </div>
-
-
-                        <div class="terminal-output">
-
-                            Kritika Singh — Software Engineer
-
-                        </div>
-
-
-                        <div class="terminal-gap"></div>
-
-
-                        <div>
-
-                        <span class="prompt">
-                            ❯
-                        </span>
-
-                            stack --current
-
-                        </div>
-
-
-                        <div class="stack-line">
-
-                        <span class="tag java">
-                            Java
-                        </span>
-
-                            <span class="tag spring">
-                            Spring Boot
-                        </span>
-
-                            <span class="tag sql">
-                            PostgreSQL
-                        </span>
-
-                        </div>
-
-
-                        <div class="stack-line">
-
-                        <span class="tag">
-                            REST APIs
-                        </span>
-
-                            <span class="tag">
-                            JPA / Hibernate
-                        </span>
-
-                            <span class="tag">
-                            Git
-                        </span>
-
-                        </div>
-
-
-                        <div class="terminal-gap"></div>
-
-
-                        <div>
-
-                        <span class="prompt">
-                            ❯
-                        </span>
-
-                            status
-
-                        </div>
-
-
-                        <div class="terminal-output success">
-
-                            ✓ Building. Learning. Shipping.
-
-                        </div>
-
-
-                        <div class="terminal-gap"></div>
-
-
-                        <div>
-
-                        <span class="prompt">
-                            ❯
-                        </span>
-
-                            <span id="typing-command"></span>
-
-                            <span class="terminal-cursor">
-                            ▋
-                        </span>
-
-                        </div>
-
-
-                    </div>
-
+                <div class="idea-lines">
+                    <span>// Ideas</span>
+                    <span>// Code</span>
+                    <span>// Build</span>
+                    <span>// Grow</span>
                 </div>
 
             </div>
 
 
-            <div class="floating-badge badge-java">
+            <!-- PHOTO CARD -->
+            <div class="stack-card stack-photo" data-speed="0.22">
 
-                <i class="fa-brands fa-java"></i>
+                <div class="photo-label">
+                    01 / PROFILE
+                </div>
 
-                <span>
-                Java
-            </span>
+                <div class="photo-frame">
+
+                    <img
+                            src="AIPhoto.jpeg"
+                            alt="Kritika Singh"
+                            loading="eager">
+
+                    <div class="photo-shine"></div>
+
+                </div>
+
+                <div class="photo-overlay"></div>
+
+                <div class="photo-name">
+                    KRITIKA
+                    <br>
+                    <span>SINGH.</span>
+                </div>
+
+                <div class="photo-side-text">
+                    SOFTWARE<br>
+                    ENGINEER
+                </div>
 
             </div>
 
 
-            <div class="floating-badge badge-api">
+            <!-- PURPLE SKILL ORB -->
+            <div class="skill-orb floating">
 
-                <i class="fa-solid fa-bolt"></i>
+                <span>JAVA</span>
+                <span>SPRING</span>
+                <span>API</span>
 
-                <span>
-                REST API
-            </span>
-
-            </div>
-
-
-            <div class="floating-badge badge-db">
-
-                <i class="fa-solid fa-database"></i>
-
-                <span>
-                SQL
-            </span>
+                <b>↗</b>
 
             </div>
 
+
+            <!-- FLOATING MINI TAGS -->
+            <div class="float-tag tag-one">JAVA</div>
+            <div class="float-tag tag-two">SPRING BOOT</div>
+            <div class="float-tag tag-three">REST API</div>
+
+
+            <!-- DECORATIVE STARS -->
+            <div class="star star-one">✦</div>
+            <div class="star star-two">✦</div>
+            <div class="star star-three">✦</div>
+
+        </div>
+
+
+        <!-- RIGHT MOTTO -->
+        <div class="hero-motto">
+            <span>KEEP</span>
+            <strong>BUILDING</strong>
+
+            <div>
+                <i>LEARN</i>
+                <i>SOLVE</i>
+                <i>BUILD</i>
+                <i>REPEAT</i>
+            </div>
+        </div>
+
+
+        <div class="scroll-cue">
+            <div class="mouse">
+                <span></span>
+            </div>
+
+            <span>SCROLL TO EXPLORE</span>
         </div>
 
     </section>
 
+
+    <!-- MARQUEE -->
+
+    <section class="marquee">
+
+        <div class="marquee-track">
+
+            <span>JAVA</span>
+            <b>✦</b>
+
+            <span>SPRING BOOT</span>
+            <b>✦</b>
+
+            <span>REST APIs</span>
+            <b>✦</b>
+
+            <span>SQL</span>
+            <b>✦</b>
+
+            <span>DSA</span>
+            <b>✦</b>
+
+            <span>JAVA</span>
+            <b>✦</b>
+
+            <span>SPRING BOOT</span>
+            <b>✦</b>
+
+            <span>REST APIs</span>
+            <b>✦</b>
+
+        </div>
+
+    </section>
 
 
     <!-- ================= ABOUT ================= -->
 
-    <section class="section"
-             id="about">
+    <section class="section about" id="about">
 
+        <div class="section-number">01</div>
 
-        <div class="section-head reveal">
+        <div class="section-heading reveal">
 
             <p class="eyebrow">
-                01 / ABOUT
+                <span></span>
+                A LITTLE ABOUT ME
             </p>
-
 
             <h2>
-
-                A developer who likes
-                <span>solving things.</span>
-
+                Engineering with
+                <br>
+                <i>purpose.</i>
             </h2>
-
-
-            <p>
-
-                Focused on writing understandable code,
-                designing practical backend systems and
-                continuously getting better.
-
-            </p>
 
         </div>
 
 
+        <div class="about-layout">
 
-        <div class="about-grid">
-
-
-            <article class="about-main glass reveal">
-
-
-                <div class="icon-box">
-
-                    <i class="fa-solid fa-code"></i>
-
-                </div>
-
-
-                <h3>
-
-                    Software Engineer & Java Developer
-
-                </h3>
-
+            <div class="about-big reveal">
 
                 <p>
-
-                    I enjoy turning ideas into working software.
-                    My core strengths are Java, Object-Oriented
-                    Programming, Data Structures & Algorithms,
-                    SQL and backend development.
-
+                    I'm <strong>Kritika Singh</strong>, a Software Engineer focused
+                    on Java, Spring Boot and backend development.
                 </p>
-
 
                 <p>
-
-                    I work with Spring Boot, Spring Data JPA,
-                    Hibernate, REST APIs and Spring Security,
-                    while using Git and GitHub for development.
-
+                    I enjoy turning ideas into structured, maintainable
+                    applications — from REST APIs and database design to
+                    authentication, security and clean object-oriented code.
                 </p>
 
-
-                <div class="mini-stats">
-
-
-                    <div>
-
-                        <strong>
-                            Java
-                        </strong>
-
-                        <span>
-                        Core language
-                    </span>
-
-                    </div>
+            </div>
 
 
-                    <div>
+            <div class="about-side reveal">
 
-                        <strong>
-                            Backend
-                        </strong>
-
-                        <span>
-                        Primary focus
-                    </span>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            SQL
-                        </strong>
-
-                        <span>
-                        Data layer
-                    </span>
-
-                    </div>
-
-
+                <div class="fact">
+                    <span>BASED IN</span>
+                    <strong>New Delhi, India</strong>
                 </div>
 
-            </article>
-
-
-
-            <div class="about-side">
-
-
-                <div class="stat-card glass reveal">
-
-                <span>
-                    01
-                </span>
-
-                    <i class="fa-solid fa-laptop-code"></i>
-
-                    <strong>
-                        Projects
-                    </strong>
-
-                    <p>
-                        Database-driven applications
-                    </p>
-
+                <div class="fact">
+                    <span>EDUCATION</span>
+                    <strong>B.Tech CSE (IoT)</strong>
                 </div>
 
-
-                <div class="stat-card glass reveal">
-
-                <span>
-                    02
-                </span>
-
-                    <i class="fa-solid fa-shield-halved"></i>
-
-                    <strong>
-                        Security
-                    </strong>
-
-                    <p>
-                        Authentication & authorization
-                    </p>
-
+                <div class="fact">
+                    <span>PRIMARY LANGUAGE</span>
+                    <strong>Java</strong>
                 </div>
 
-
-                <div class="stat-card glass reveal">
-
-                <span>
-                    03
-                </span>
-
-                    <i class="fa-solid fa-layer-group"></i>
-
-                    <strong>
-                        Architecture
-                    </strong>
-
-                    <p>
-                        MVC, REST & layered design
-                    </p>
-
+                <div class="fact">
+                    <span>FOCUS</span>
+                    <strong>Backend Development</strong>
                 </div>
-
 
             </div>
 
         </div>
 
     </section>
-
 
 
     <!-- ================= SKILLS ================= -->
 
-    <section class="section"
-             id="skills">
+    <section class="section skills" id="skills">
 
+        <div class="section-number">02</div>
 
-        <div class="section-head reveal">
+        <div class="section-heading reveal">
 
             <p class="eyebrow">
-                02 / TOOLBOX
+                <span></span>
+                MY TOOLKIT
             </p>
-
 
             <h2>
-
-                My
-                <span>technical stack.</span>
-
+                Things I
+                <br>
+                <i>work with.</i>
             </h2>
 
+        </div>
 
-            <p>
 
-                Technologies and fundamentals I use
-                to build software.
+        <div class="skills-orbit reveal">
 
-            </p>
+            <div class="skill-core">
+                JAVA
+                <small>BACKEND</small>
+            </div>
+
+            <div class="skill-chip chip-1">Java</div>
+            <div class="skill-chip chip-2">Spring Boot</div>
+            <div class="skill-chip chip-3">Spring Security</div>
+            <div class="skill-chip chip-4">Hibernate / JPA</div>
+            <div class="skill-chip chip-5">PostgreSQL</div>
+            <div class="skill-chip chip-6">SQL</div>
+            <div class="skill-chip chip-7">REST APIs</div>
+            <div class="skill-chip chip-8">Docker</div>
+            <div class="skill-chip chip-9">JavaScript</div>
+            <div class="skill-chip chip-10">HTML / CSS</div>
+            <div class="skill-chip chip-11">DSA</div>
 
         </div>
 
 
+        <div class="skill-grid reveal">
 
-        <div class="skills-layout">
-
-
-            <div class="skill-panel glass reveal">
-
-
-                <div class="skill-panel-head">
-
-                <span>
-                    CORE SKILLS
-                </span>
-
-                    <i class="fa-solid fa-code"></i>
-
-                </div>
-
-
-                <div class="skill">
-
-                    <div>
-
-                        <b>
-                            Java
-                        </b>
-
-                        <em>
-                            Advanced
-                        </em>
-
-                    </div>
-
-                    <div class="bar">
-
-                        <span data-width="92%"></span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="skill">
-
-                    <div>
-
-                        <b>
-                            OOP / DSA
-                        </b>
-
-                        <em>
-                            Strong
-                        </em>
-
-                    </div>
-
-                    <div class="bar">
-
-                        <span data-width="88%"></span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="skill">
-
-                    <div>
-
-                        <b>
-                            SQL / DBMS
-                        </b>
-
-                        <em>
-                            Strong
-                        </em>
-
-                    </div>
-
-                    <div class="bar">
-
-                        <span data-width="84%"></span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="skill">
-
-                    <div>
-
-                        <b>
-                            REST APIs
-                        </b>
-
-                        <em>
-                            Strong
-                        </em>
-
-                    </div>
-
-                    <div class="bar">
-
-                        <span data-width="82%"></span>
-
-                    </div>
-
-                </div>
-
-
+            <div class="skill-box">
+                <span>01</span>
+                <h3>Backend</h3>
+                <p>
+                    Java · Spring Boot · Spring Security ·
+                    Hibernate · JPA · REST APIs
+                </p>
             </div>
 
-
-
-            <div class="tech-cloud glass reveal">
-
-
-                <div class="skill-panel-head">
-
-                <span>
-                    TECHNOLOGIES
-                </span>
-
-                    <i class="fa-solid fa-cubes"></i>
-
-                </div>
-
-
-                <div class="chips">
-
-                    <span>Java</span>
-                    <span>Spring Boot</span>
-                    <span>Spring Security</span>
-                    <span>Spring Data JPA</span>
-                    <span>Hibernate</span>
-                    <span>PostgreSQL</span>
-                    <span>MySQL</span>
-                    <span>JDBC</span>
-                    <span>JWT</span>
-                    <span>Git</span>
-                    <span>GitHub</span>
-                    <span>Docker</span>
-                    <span>JavaScript</span>
-                    <span>HTML</span>
-                    <span>CSS</span>
-
-                </div>
-
+            <div class="skill-box">
+                <span>02</span>
+                <h3>Database</h3>
+                <p>
+                    PostgreSQL · SQL · database-driven
+                    application design · Flyway
+                </p>
             </div>
 
-        </div>
+            <div class="skill-box">
+                <span>03</span>
+                <h3>Frontend</h3>
+                <p>
+                    HTML · CSS · JavaScript ·
+                    Thymeleaf · Bootstrap
+                </p>
+            </div>
 
-
-
-        <div class="fundamentals reveal">
-
-        <span>
-            FUNDAMENTALS
-        </span>
-
-            <div>
-
-                <b>OOP</b>
-                <b>DSA</b>
-                <b>DBMS</b>
-                <b>Operating Systems</b>
-                <b>Computer Networks</b>
-                <b>SDLC</b>
-
+            <div class="skill-box">
+                <span>04</span>
+                <h3>Tools</h3>
+                <p>
+                    Docker · Git · GitHub ·
+                    OOP · DSA
+                </p>
             </div>
 
         </div>
 
     </section>
-
 
 
     <!-- ================= PROJECTS ================= -->
 
-    <section class="section"
-             id="projects">
+    <section class="section projects" id="projects">
 
+        <div class="section-number">03</div>
 
-        <div class="section-head reveal">
+        <div class="section-heading reveal">
 
             <p class="eyebrow">
-                03 / SELECTED WORK
+                <span></span>
+                SELECTED WORK
             </p>
-
 
             <h2>
-
-                Things I've
-                <span>built.</span>
-
+                Built, tested,
+                <br>
+                <i>shipped.</i>
             </h2>
-
-
-            <p>
-
-                Projects that show how I approach
-                engineering problems.
-
-            </p>
 
         </div>
 
 
+        <div class="project-list">
 
-        <div class="project-grid">
-
-
-            <!-- URL SHORTENER -->
-
-            <article class="project-card featured glass reveal">
-
-
-                <div class="project-number">
-                    01
-                </div>
-
+            <article class="project-card reveal">
 
                 <div class="project-top">
 
+                <span class="project-index">
+                    01 / BACKEND
+                </span>
 
-                    <div class="project-icon">
-
-                        <i class="fa-solid fa-link"></i>
-
-                    </div>
-
-
-                    <div class="project-actions">
-
-
-                        <button class="round-link project-preview"
-                                data-project="url"
-                                aria-label="Preview URL Shortener">
-
-                            <i class="fa-solid fa-eye"></i>
-
-                        </button>
-
-
-                        <!-- ACTUAL URL SHORTENER REPOSITORY -->
-
-                        <a href="https://github.com/KritikaaSinghh/kritika-url-shortener"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="round-link"
-                           aria-label="URL Shortener GitHub">
-
-                            <i class="fa-brands fa-github"></i>
-
-                        </a>
-
-
-                    </div>
+                    <span class="project-arrow">↗</span>
 
                 </div>
-
 
 
                 <div class="project-content">
 
+                    <div>
 
-                    <p class="project-label">
-                        BACKEND APPLICATION
-                    </p>
+                        <h3>
+                            URL Shortener
+                            <br>
+                            <i>Application</i>
+                        </h3>
 
+                        <p>
+                            A database-driven URL shortener built with MVC
+                            architecture, secure authentication and authorization,
+                            plus analytics for tracking shortened URLs.
+                        </p>
 
-                    <h3>
-                        URL Shortener
-                    </h3>
+                        <div class="tags">
 
+                            <span>Java</span>
+                            <span>Spring Boot</span>
+                            <span>Spring Security</span>
+                            <span>Hibernate</span>
+                            <span>JPA</span>
+                            <span>PostgreSQL</span>
+                            <span>Flyway</span>
+                            <span>Docker</span>
 
-                    <p>
-
-                        A secure database-driven URL Shortener
-                        built with Spring Boot, MVC architecture,
-                        authentication, authorization, analytics
-                        and URL management.
-
-                    </p>
-
-
-                    <div class="feature-list">
-
-
-                    <span>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Authentication & Authorization
-
-                    </span>
-
-
-                        <span>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Role-Based Access
-
-                    </span>
-
-
-                        <span>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Private URLs & Expiration
-
-                    </span>
-
-
-                        <span>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Analytics Dashboard
-
-                    </span>
-
-
-                        <span>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Flyway Migrations
-
-                    </span>
-
-
-                        <span>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Docker PostgreSQL
-
-                    </span>
-
+                        </div>
 
                     </div>
 
 
+                    <a
+                            class="project-link magnetic"
+                            href="https://github.com/KritikaaSinghh/kritika-url-shortener"
+                            target="_blank"
+                            rel="noopener noreferrer">
 
-                    <div class="tech-row">
+                        View on GitHub
+                        <span>↗</span>
 
-                        <span>Java</span>
-                        <span>Spring Boot</span>
-                        <span>Spring Security</span>
-                        <span>JPA</span>
-                        <span>PostgreSQL</span>
-                        <span>Docker</span>
-
-                    </div>
-
-
-
-                    <button class="project-btn project-preview"
-                            data-project="url">
-
-                        View project
-
-                        <i class="fa-solid fa-arrow-right"></i>
-
-                    </button>
-
+                    </a>
 
                 </div>
 
             </article>
 
 
-
-            <!-- SORTING VISUALIZER -->
-
-            <article class="project-card glass reveal">
-
-
-                <div class="project-number">
-                    02
-                </div>
-
+            <article class="project-card project-light reveal">
 
                 <div class="project-top">
 
+                <span class="project-index">
+                    02 / INTERACTIVE
+                </span>
 
-                    <div class="project-icon">
+                    <span class="project-arrow">↗</span>
 
-                        <i class="fa-solid fa-chart-simple"></i>
+                </div>
+
+
+                <div class="project-content">
+
+                    <div>
+
+                        <h3>
+                            Sorting
+                            <br>
+                            <i>Visualizer</i>
+                        </h3>
+
+                        <p>
+                            An interactive sorting visualizer with real-time
+                            animations, speed controls and complexity information
+                            to make sorting algorithms easier to understand.
+                        </p>
+
+                        <div class="tags">
+
+                            <span>Java</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+
+                        </div>
 
                     </div>
 
 
                     <div class="project-actions">
 
-
-                        <button class="round-link project-preview"
-                                data-project="sorting">
-
-                            <i class="fa-solid fa-eye"></i>
-
-                        </button>
-
-
-                        <a href="https://github.com/KritikaaSinghh/Sorting-Visualizer"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="round-link">
-
-                            <i class="fa-brands fa-github"></i>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="project-content">
-
-
-                    <p class="project-label">
-                        INTERACTIVE WEB APP
-                    </p>
-
-
-                    <h3>
-                        Sorting Visualizer
-                    </h3>
-
-
-                    <p>
-
-                        An interactive visualizer for sorting
-                        algorithms with animations, controls
-                        and complexity information.
-
-                    </p>
-
-
-                    <div class="feature-list compact">
-
-
-                    <span>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Bubble, Selection & Insertion
-
-                    </span>
-
-
-                        <span>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Merge & Quick Sort
-
-                    </span>
-
-
-                        <span>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Complexity Display
-
-                    </span>
-
-
-                    </div>
-
-
-
-                    <div class="tech-row">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-
-                    </div>
-
-
-
-                    <div class="project-buttons">
-
-
-                        <a href="https://github.com/KritikaaSinghh/Sorting-Visualizer"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="project-btn">
+                        <a
+                                class="project-link magnetic"
+                                href="https://github.com/KritikaaSinghh/Sorting-Visualizer"
+                                target="_blank"
+                                rel="noopener noreferrer">
 
                             GitHub
+                            <span>↗</span>
 
                         </a>
 
-
-                        <a href="https://kritikaasinghh.github.io/Sorting-Visualizer/"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="project-btn filled">
+                        <a
+                                class="project-link magnetic"
+                                href="https://kritikaasinghh.github.io/Sorting-Visualizer/"
+                                target="_blank"
+                                rel="noopener noreferrer">
 
                             Live Demo
+                            <span>↗</span>
 
                         </a>
 
                     </div>
 
-
                 </div>
 
             </article>
-
 
         </div>
 
     </section>
-
 
 
     <!-- ================= HOW I BUILD ================= -->
 
-    <section class="section"
-             id="process">
+    <section class="section build" id="build">
 
+        <div class="section-number">04</div>
 
-        <div class="section-head reveal">
+        <div class="section-heading reveal">
 
             <p class="eyebrow">
-                04 / ENGINEERING PROCESS
+                <span></span>
+                MY APPROACH
             </p>
 
-
             <h2>
-
                 How I
-                <span>build software.</span>
-
+                <br>
+                <i>build.</i>
             </h2>
 
-
-            <p>
-
-                From understanding the problem to
-                building and shipping the solution.
-
-            </p>
-
         </div>
 
 
+        <div class="build-timeline">
 
-        <div class="process-grid">
+            <div class="build-step reveal">
 
-
-            <div class="process-card glass reveal">
-
-            <span class="process-number">
-                01
-            </span>
-
-                <div class="process-icon">
-                    <i class="fa-solid fa-lightbulb"></i>
-                </div>
-
-                <h3>
-                    Understand
-                </h3>
-
-                <p>
-                    Break the requirement into clear,
-                    manageable problems.
-                </p>
-
-            </div>
-
-
-            <div class="process-card glass reveal">
-
-            <span class="process-number">
-                02
-            </span>
-
-                <div class="process-icon">
-                    <i class="fa-solid fa-diagram-project"></i>
-                </div>
-
-                <h3>
-                    Design
-                </h3>
-
-                <p>
-                    Choose architecture, data flow,
-                    APIs and database structure.
-                </p>
-
-            </div>
-
-
-            <div class="process-card glass reveal">
-
-            <span class="process-number">
-                03
-            </span>
-
-                <div class="process-icon">
-                    <i class="fa-solid fa-code"></i>
-                </div>
-
-                <h3>
-                    Build
-                </h3>
-
-                <p>
-                    Write clean Java code with
-                    reusable components and layers.
-                </p>
-
-            </div>
-
-
-            <div class="process-card glass reveal">
-
-            <span class="process-number">
-                04
-            </span>
-
-                <div class="process-icon">
-                    <i class="fa-solid fa-vial"></i>
-                </div>
-
-                <h3>
-                    Test
-                </h3>
-
-                <p>
-                    Validate functionality, edge cases,
-                    APIs and database behaviour.
-                </p>
-
-            </div>
-
-
-            <div class="process-card glass reveal">
-
-            <span class="process-number">
-                05
-            </span>
-
-                <div class="process-icon">
-                    <i class="fa-brands fa-github"></i>
-                </div>
-
-                <h3>
-                    Version
-                </h3>
-
-                <p>
-                    Track changes with Git and maintain
-                    a clean project history.
-                </p>
-
-            </div>
-
-
-            <div class="process-card glass reveal">
-
-            <span class="process-number">
-                06
-            </span>
-
-                <div class="process-icon">
-                    <i class="fa-solid fa-rocket"></i>
-                </div>
-
-                <h3>
-                    Ship
-                </h3>
-
-                <p>
-                    Deploy, document and continuously
-                    improve the application.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= GITHUB ================= -->
-
-    <section class="section"
-             id="github">
-
-
-        <div class="section-head reveal">
-
-            <p class="eyebrow">
-                05 / OPEN SOURCE
-            </p>
-
-
-            <h2>
-
-                Code that lives on
-                <span>GitHub.</span>
-
-            </h2>
-
-
-            <p>
-
-                Explore my repositories, projects and
-                development work.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="github-panel glass reveal">
-
-
-            <div class="github-profile">
-
-
-                <div class="github-avatar">
-                    KS
-                </div>
-
+                <span>01</span>
 
                 <div>
-
-                    <h3>
-                        Kritika Singh
-                    </h3>
-
+                    <h3>Understand</h3>
                     <p>
-                        Java Developer · Backend Developer
+                        Break the requirement down before writing code.
                     </p>
-
-                    <a href="https://github.com/KritikaaSinghh"
-                       target="_blank"
-                       rel="noopener noreferrer">
-
-                        @KritikaaSinghh
-
-                    </a>
-
                 </div>
 
             </div>
 
 
+            <div class="build-step reveal">
 
-            <div class="github-stats">
-
-
-                <div>
-
-                    <strong>
-                        Java
-                    </strong>
-
-                    <span>
-                    Primary stack
-                </span>
-
-                </div>
-
+                <span>02</span>
 
                 <div>
-
-                    <strong>
-                        Backend
-                    </strong>
-
-                    <span>
-                    Core focus
-                </span>
-
+                    <h3>Design</h3>
+                    <p>
+                        Think through architecture, data flow and edge cases.
+                    </p>
                 </div>
-
-
-                <div>
-
-                    <strong>
-                        REST
-                    </strong>
-
-                    <span>
-                    API development
-                </span>
-
-                </div>
-
 
             </div>
 
 
+            <div class="build-step reveal">
 
-            <a href="https://github.com/KritikaaSinghh"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="github-button">
+                <span>03</span>
 
-                Visit GitHub
+                <div>
+                    <h3>Implement</h3>
+                    <p>
+                        Write clean, object-oriented Java and maintainable APIs.
+                    </p>
+                </div>
 
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
 
-            </a>
 
+            <div class="build-step reveal">
+
+                <span>04</span>
+
+                <div>
+                    <h3>Improve</h3>
+                    <p>
+                        Test, debug, refactor and keep learning from the result.
+                    </p>
+                </div>
+
+            </div>
 
         </div>
 
     </section>
-
 
 
     <!-- ================= CERTIFICATIONS ================= -->
 
-    <section class="section"
-             id="certifications">
+    <section class="section certifications" id="certifications">
 
+        <div class="section-number">05</div>
 
-        <div class="section-head reveal">
+        <div class="section-heading reveal">
 
             <p class="eyebrow">
-                06 / LEARNING
+                <span></span>
+                LEARNING
             </p>
 
-
             <h2>
-
-                Credentials &
-                <span>certifications.</span>
-
+                Certified
+                <br>
+                <i>curiosity.</i>
             </h2>
 
         </div>
 
 
+        <div class="cert-list">
 
-        <div class="cert-grid">
-
-
-            <div class="cert-card glass reveal">
-
-                <i class="fa-brands fa-java"></i>
-
-                <div>
-
-                    <b>
-                        Java Complete Course
-                    </b>
-
-                    <span>
-                    Udemy · 2025
-                </span>
-
-                </div>
-
+            <div class="cert-row reveal">
+                <span>01</span>
+                <strong>Java Complete Course</strong>
+                <small>Udemy · 2025</small>
             </div>
 
-
-            <div class="cert-card glass reveal">
-
-                <i class="fa-solid fa-database"></i>
-
-                <div>
-
-                    <b>
-                        Practical SQL
-                    </b>
-
-                    <span>
-                    Udemy · 2025
-                </span>
-
-                </div>
-
+            <div class="cert-row reveal">
+                <span>02</span>
+                <strong>Practical SQL</strong>
+                <small>Udemy · 2025</small>
             </div>
 
-
-            <div class="cert-card glass reveal">
-
-                <i class="fa-solid fa-leaf"></i>
-
-                <div>
-
-                    <b>
-                        MongoDB Basics
-                    </b>
-
-                    <span>
-                    MongoDB · 2025
-                </span>
-
-                </div>
-
+            <div class="cert-row reveal">
+                <span>03</span>
+                <strong>MongoDB Basics</strong>
+                <small>MongoDB · 2025</small>
             </div>
 
-
-            <div class="cert-card glass reveal">
-
-                <i class="fa-solid fa-network-wired"></i>
-
-                <div>
-
-                    <b>
-                        CCNA: Introduction to Networks
-                    </b>
-
-                    <span>
-                    Cisco · 2025
-                </span>
-
-                </div>
-
+            <div class="cert-row reveal">
+                <span>04</span>
+                <strong>CCNA: Introduction to Networks</strong>
+                <small>Cisco · 2025</small>
             </div>
 
-
-            <div class="cert-card glass reveal">
-
-                <i class="fa-brands fa-js"></i>
-
-                <div>
-
-                    <b>
-                        JavaScript Course
-                    </b>
-
-                    <span>
-                    Udemy · 2024
-                </span>
-
-                </div>
-
+            <div class="cert-row reveal">
+                <span>05</span>
+                <strong>JavaScript Course</strong>
+                <small>Udemy · 2024</small>
             </div>
 
-
-            <div class="cert-card glass reveal">
-
-                <i class="fa-solid fa-brain"></i>
-
-                <div>
-
-                    <b>
-                        Python for Machine Learning
-                    </b>
-
-                    <span>
-                    Great Learning · 2024
-                </span>
-
-                </div>
-
+            <div class="cert-row reveal">
+                <span>06</span>
+                <strong>Python for Machine Learning</strong>
+                <small>Great Learning · 2024</small>
             </div>
 
-
-            <div class="cert-card glass reveal">
-
-                <i class="fa-solid fa-robot"></i>
-
-                <div>
-
-                    <b>
-                        Generative AI & AI for Leaders
-                    </b>
-
-                    <span>
-                    Udemy · 2025
-                </span>
-
-                </div>
-
+            <div class="cert-row reveal">
+                <span>07</span>
+                <strong>Generative AI &amp; AI for Leaders</strong>
+                <small>Udemy · 2025</small>
             </div>
-
 
         </div>
 
     </section>
-
 
 
     <!-- ================= EDUCATION ================= -->
 
-    <section class="section"
-             id="education">
+    <section class="section education" id="education">
 
+        <div class="section-number">06</div>
 
-        <div class="section-head reveal">
+        <div class="education-card reveal">
 
-            <p class="eyebrow">
-                07 / BACKGROUND
-            </p>
+            <div class="education-year">
+                MAY
+                <br>
+                2026
+            </div>
 
+            <div class="education-main">
 
-            <h2>
-
-                My
-                <span>education.</span>
-
-            </h2>
-
-        </div>
-
-
-
-        <div class="timeline reveal">
-
-
-            <div class="timeline-line"></div>
-
-            <div class="timeline-dot"></div>
-
-
-            <div class="timeline-card glass">
-
-
-                <div class="timeline-date">
-
-                    MAY 2026
-
-                </div>
-
-
-                <h3>
-
-                    Bachelor of Technology (B.Tech)
-
-                </h3>
-
-
-                <h4>
-
-                    Computer Science and Engineering
-                    (Internet of Things)
-
-                </h4>
-
-
-                <p>
-
-                    Meerut Institute of Engineering and Technology
-                    (MIET), Meerut, Uttar Pradesh
-
+                <p class="eyebrow">
+                    <span></span>
+                    EDUCATION
                 </p>
 
+                <h2>
+                    Bachelor of Technology
+                </h2>
+
+                <h3>
+                    Computer Science &amp; Engineering
+                    (Internet of Things)
+                </h3>
+
+                <p>
+                    Meerut Institute of Engineering and Technology
+                    (MIET), Meerut, Uttar Pradesh
+                </p>
 
             </div>
 
@@ -1759,134 +840,172 @@
     </section>
 
 
-
     <!-- ================= CONTACT ================= -->
 
-    <section class="section"
-             id="contact">
+    <section class="section contact" id="contact">
+
+        <div class="section-number">07</div>
+
+        <div class="contact-heading reveal">
+
+            <p class="eyebrow">
+                <span></span>
+                HAVE AN IDEA?
+            </p>
+
+            <h2>
+                Let's start a
+                <br>
+                <i>conversation.</i>
+            </h2>
+
+            <p>
+                Whether it's a backend project, an opportunity,
+                or just a technical conversation — I'd love to hear from you.
+            </p>
+
+        </div>
 
 
-        <div class="contact-wrap glass reveal">
+        <div class="contact-layout">
 
+            <div class="contact-info reveal">
 
-            <div class="contact-copy">
+                <div class="contact-item">
 
-
-                <p class="eyebrow">
-                    08 / CONTACT
-                </p>
-
-
-                <h2>
-
-                    Have an opportunity?
-
-                    <br>
-
-                    <span>
-                    Let's talk.
-                </span>
-
-                </h2>
-
-
-                <p>
-
-                    I'm open to software development opportunities,
-                    collaborations and interesting projects.
-
-                </p>
-
-
-
-                <div class="contact-links">
-
+                    <span>EMAIL</span>
 
                     <a href="mailto:singhkritika8449@gmail.com">
-
-
-                        <i class="fa-solid fa-envelope"></i>
-
-
-                        <span>
-
-                        Email<br>
-
-                        <b>
-                            singhkritika8449@gmail.com
-                        </b>
-
-                    </span>
-
-
+                        singhkritika8449@gmail.com
                     </a>
-
-
-
-                    <a href="https://www.linkedin.com/in/kritikaasinghh"
-                       target="_blank"
-                       rel="noopener noreferrer">
-
-
-                        <i class="fa-brands fa-linkedin"></i>
-
-
-                        <span>
-
-                        LinkedIn<br>
-
-                        <b>
-                            /in/kritikaasinghh
-                        </b>
-
-                    </span>
-
-
-                    </a>
-
 
                 </div>
 
+
+                <div class="contact-item">
+
+                    <span>LOCATION</span>
+
+                    <strong>
+                        New Delhi, India
+                    </strong>
+
+                </div>
+
+
+                <div class="socials">
+
+                    <a
+                            href="https://github.com/KritikaaSinghh"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                        GitHub ↗
+
+                    </a>
+
+                    <a
+                            href="https://www.linkedin.com/in/kritikaasinghh"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                        LinkedIn ↗
+
+                    </a>
+
+                </div>
 
             </div>
 
 
+            <!-- FORM -->
 
-            <div class="contact-cta">
+            <form
+                    class="contact-form reveal"
+                    id="contactForm"
+                    action="https://formsubmit.co/ajax/singhkritika8449@gmail.com"
+                    method="POST">
+
+                <input
+                        type="hidden"
+                        name="_subject"
+                        value="New Portfolio Message — Kritika Singh">
+
+                <input
+                        type="hidden"
+                        name="_template"
+                        value="table">
+
+                <input
+                        type="hidden"
+                        name="_captcha"
+                        value="false">
+
+                <input
+                        type="text"
+                        name="_honey"
+                        class="honey"
+                        tabindex="-1"
+                        autocomplete="off">
+
+                <label>
+
+                    <span>YOUR NAME</span>
+
+                    <input
+                            type="text"
+                            name="name"
+                            placeholder="Your name"
+                            autocomplete="name"
+                            required>
+
+                </label>
 
 
-                <div class="contact-orb">
+                <label>
 
-                    <i class="fa-regular fa-paper-plane"></i>
+                    <span>YOUR EMAIL</span>
 
-                </div>
+                    <input
+                            type="email"
+                            name="email"
+                            placeholder="your@email.com"
+                            autocomplete="email"
+                            required>
 
-
-                <h3>
-                    Let's build something.
-                </h3>
-
-
-                <p>
-
-                    Send me a message and
-                    I'll get back to you.
-
-                </p>
+                </label>
 
 
-                <button class="btn btn-primary"
-                        id="open-contact">
+                <label>
 
-                    Say Hello
+                    <span>MESSAGE</span>
 
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <textarea
+                            name="message"
+                            placeholder="Tell me a little about your idea..."
+                            required></textarea>
+
+                </label>
+
+
+                <button
+                        type="submit"
+                        class="submit-btn magnetic"
+                        id="submitBtn">
+
+                    <span>Send message</span>
+                    <b>↗</b>
 
                 </button>
 
 
-            </div>
+                <p
+                        class="form-status"
+                        id="formStatus"
+                        aria-live="polite">
+                </p>
 
+            </form>
 
         </div>
 
@@ -1895,329 +1014,26 @@
 </main>
 
 
-
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 
 <footer class="footer">
 
-
-    <a href="#home"
-       class="logo">
-
-        <span>K</span>ritika
-        <span class="logo-dot">.</span>
-
-    </a>
-
-
-    <p>
-
-        Designed & built by Kritika Singh
-
-    </p>
-
+    <div>
+        © <span id="year"></span> Kritika Singh
+    </div>
 
     <div>
-
-
-        <a href="https://github.com/KritikaaSinghh"
-           target="_blank"
-           rel="noopener noreferrer">
-
-            <i class="fa-brands fa-github"></i>
-
-        </a>
-
-
-        <a href="https://www.linkedin.com/in/kritikaasinghh"
-           target="_blank"
-           rel="noopener noreferrer">
-
-            <i class="fa-brands fa-linkedin"></i>
-
-        </a>
-
-
+        Java · Spring Boot · Backend
     </div>
 
-
-    <small>
-
-        © <span id="year"></span>
-        Kritika Singh.
-        All rights reserved.
-
-    </small>
-
+    <a href="#home">
+        Back to top ↑
+    </a>
 
 </footer>
-
-
-
-<!-- ================= SCROLL TOP ================= -->
-
-<button class="scroll-top"
-        id="scroll-top"
-        aria-label="Scroll to top">
-
-    <i class="fa-solid fa-arrow-up"></i>
-
-</button>
-
-
-
-<!-- ================= PROJECT MODAL ================= -->
-
-<div class="project-modal"
-     id="project-modal">
-
-
-    <div class="modal-overlay"
-         id="project-overlay">
-    </div>
-
-
-    <div class="project-modal-box">
-
-
-        <button class="modal-close"
-                id="close-project">
-
-            <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-
-        <div class="modal-project-icon"
-             id="modal-project-icon">
-
-            <i class="fa-solid fa-link"></i>
-
-        </div>
-
-
-        <p class="eyebrow"
-           id="modal-project-label">
-
-            PROJECT
-
-        </p>
-
-
-        <h2 id="modal-project-title">
-
-            URL Shortener
-
-        </h2>
-
-
-        <p id="modal-project-description">
-
-            A secure backend application.
-
-        </p>
-
-
-        <div class="modal-feature-list"
-             id="modal-project-features">
-        </div>
-
-
-        <div class="tech-row"
-             id="modal-project-tech">
-        </div>
-
-
-        <div class="modal-project-actions">
-
-
-            <a href="https://github.com/KritikaaSinghh/kritika-url-shortener"
-               id="modal-github"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="project-btn">
-
-                <i class="fa-brands fa-github"></i>
-
-                GitHub
-
-            </a>
-
-
-        </div>
-
-
-    </div>
-
-</div>
-
-
-
-<!-- ================= CONTACT MODAL ================= -->
-
-<div class="contact-modal"
-     id="contact-modal">
-
-
-    <div class="contact-overlay"
-         id="contact-overlay">
-    </div>
-
-
-    <div class="modal-box">
-
-
-        <button class="modal-close"
-                id="close-contact">
-
-            <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-
-        <div class="modal-heading">
-
-
-            <div class="modal-icon">
-
-                <i class="fa-regular fa-paper-plane"></i>
-
-            </div>
-
-
-            <p class="eyebrow">
-
-                LET'S CONNECT
-
-            </p>
-
-
-            <h2>
-
-                Tell me what's
-                <span>next.</span>
-
-            </h2>
-
-
-            <p>
-
-                Your message will be sent directly
-                to my inbox.
-
-            </p>
-
-
-        </div>
-
-
-
-        <form id="contact-form"
-              action="https://formspree.io/f/xjybqerk"
-              method="POST">
-
-
-            <div class="form-row">
-
-
-                <label>
-
-                    Name
-
-                    <input type="text"
-                           name="name"
-                           placeholder="Your name"
-                           autocomplete="name"
-                           required>
-
-                </label>
-
-
-                <label>
-
-                    Email
-
-                    <input type="email"
-                           name="email"
-                           placeholder="you@example.com"
-                           autocomplete="email"
-                           required>
-
-                </label>
-
-
-            </div>
-
-
-            <label>
-
-                Message
-
-                <textarea name="message"
-                          rows="5"
-                          placeholder="Tell me about the opportunity..."
-                          required></textarea>
-
-            </label>
-
-
-            <input type="hidden"
-                   name="_subject"
-                   value="New Portfolio Message - Kritika Singh">
-
-
-            <button class="modal-send-btn"
-                    type="submit">
-
-                Send Message
-
-                <i class="fa-solid fa-paper-plane"></i>
-
-            </button>
-
-
-        </form>
-
-
-        <div class="modal-social">
-
-
-            <a href="mailto:singhkritika8449@gmail.com">
-
-                <i class="fa-solid fa-envelope"></i>
-
-            </a>
-
-
-            <a href="https://www.linkedin.com/in/kritikaasinghh"
-               target="_blank"
-               rel="noopener noreferrer">
-
-                <i class="fa-brands fa-linkedin"></i>
-
-            </a>
-
-
-            <a href="https://github.com/KritikaaSinghh"
-               target="_blank"
-               rel="noopener noreferrer">
-
-                <i class="fa-brands fa-github"></i>
-
-            </a>
-
-
-        </div>
-
-
-    </div>
-
-</div>
-
 
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
