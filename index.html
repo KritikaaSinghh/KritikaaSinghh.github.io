@@ -5,1111 +5,713 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Kritika Singh — Software Engineer</title>
-
-    <meta name="description"
-          content="Kritika Singh — Java, Spring Boot, Backend Development, REST APIs and SQL.">
+    <meta name="description" content="Kritika Singh — Software Engineer focused on Java, Spring Boot and backend development.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
-
-    <link
-            href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
-            rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="loader">
-    <div class="loader-inner">
-        <div class="loader-logo">KS<span>.</span></div>
-        <div class="loader-number">000</div>
-        <div class="loader-line">
-            <span></span>
-        </div>
-        <p>BUILDING DIGITAL EXPERIENCE</p>
-    </div>
-</div>
-
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-<div class="cursor-text">VIEW</div>
-
 <div class="noise"></div>
-<div class="scanlines"></div>
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
 
-<div class="aurora aurora-one"></div>
-<div class="aurora aurora-two"></div>
-
-<div class="mouse-glow"></div>
+<canvas id="space"></canvas>
 
 <div class="scroll-progress"></div>
 
-<canvas id="particles"></canvas>
-
-
-<!-- NAVIGATION -->
-
-<header class="navbar">
-
-    <a href="#home" class="logo magnetic">
-        K<span>S</span>.
+<nav class="nav">
+    <a href="#home" class="logo">
+        <span>K</span>S<span class="dot">.</span>
     </a>
 
-    <nav>
-        <a href="#home">Home</a>
+    <div class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-    </nav>
+    </div>
 
-    <a href="#contact" class="nav-button magnetic">
-        Let's Talk <span>↗</span>
+    <a href="#contact" class="nav-btn magnetic">
+        <span>Let's Talk</span>
+        <i>↗</i>
     </a>
+</nav>
 
-</header>
+<main>
 
+    <section class="hero" id="home">
 
-<!-- HERO -->
+        <div class="hero-grid"></div>
 
-<section class="hero" id="home">
+        <div class="hero-orb orb-one"></div>
+        <div class="hero-orb orb-two"></div>
 
-    <div class="hero-grid"></div>
+        <div class="hero-content">
 
-    <div class="hero-lines">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <div class="hero-watermark">
-        ENGINEER
-    </div>
-
-    <div class="hero-top">
-        <span>✦ SOFTWARE ENGINEER</span>
-        <span>NEW DELHI / INDIA</span>
-        <span>AVAILABLE FOR OPPORTUNITIES</span>
-    </div>
-
-
-    <div class="hero-content">
-
-        <div class="hero-copy">
-
-            <div class="mini-label reveal">
-                <span class="pulse-dot"></span>
-                JAVA • SPRING BOOT • BACKEND
+            <div class="eyebrow reveal">
+                <span class="live-dot"></span>
+                SOFTWARE ENGINEER
+                <span class="line"></span>
+                NEW DELHI · INDIA
             </div>
 
-            <h1 class="hero-title">
+            <div class="hero-title-wrap">
 
-                <span class="title-line first">
-                    <span class="title-word">Kritika</span>
-                </span>
+                <div class="hero-outline">BACKEND</div>
 
-                <span class="title-line second">
-                    <span class="outline-word">Singh</span>
-                    <span class="dot">.</span>
-                </span>
+                <h1 class="hero-title">
+                    <span class="title-line">Kritika</span>
+                    <span class="title-line second">Singh<span class="purple">.</span></span>
+                </h1>
 
-            </h1>
-
-
-            <div class="hero-subtitle reveal">
-
-                <span>JAVA &amp; SPRING BOOT</span>
-
-                <b>×</b>
-
-                <span>BACKEND DEVELOPMENT</span>
-
-            </div>
-
-
-            <p class="hero-description reveal">
-                I build clean, secure and scalable backend applications
-                using Java, Spring Boot, REST APIs and modern database
-                technologies.
-            </p>
-
-
-            <div class="hero-buttons reveal">
-
-                <a href="#projects" class="hero-btn primary magnetic">
-                    <span>Explore My Work</span>
-                    <b>↗</b>
-                </a>
-
-                <a href="#contact" class="hero-btn magnetic">
-                    <span>Start a Conversation</span>
-                    <b>↗</b>
-                </a>
-
-            </div>
-
-
-            <div class="hero-stats reveal">
-
-                <div class="stat">
-                    <strong>02<span>+</span></strong>
-                    <small>PROJECTS</small>
-                </div>
-
-                <div class="stat">
-                    <strong>07</strong>
-                    <small>CERTIFICATIONS</small>
-                </div>
-
-                <div class="stat">
-                    <strong>2026</strong>
-                    <small>B.TECH</small>
-                </div>
-
-                <div class="stat">
-                    <strong>∞</strong>
-                    <small>LEARNING</small>
+                <div class="hero-side-text">
+                    JAVA<br>
+                    SPRING<br>
+                    BACKEND
                 </div>
 
             </div>
 
+            <div class="hero-bottom">
+
+                <p class="hero-description reveal">
+                    I build clean, scalable and secure backend systems
+                    using <strong>Java</strong>, <strong>Spring Boot</strong>,
+                    REST APIs, SQL and modern development practices.
+                </p>
+
+                <div class="hero-actions reveal">
+                    <a href="#projects" class="primary-btn magnetic">
+                        <span>Explore Work</span>
+                        <b>↓</b>
+                    </a>
+
+                    <a href="#contact" class="secondary-btn magnetic">
+                        Get in touch ↗
+                    </a>
+                </div>
+
+            </div>
         </div>
 
+        <!-- 3D PROFILE COMPOSITION -->
+        <div class="scene">
 
-        <!-- CRAZY VISUAL -->
-
-        <div class="hero-visual" id="heroVisual">
-
-            <div class="visual-number">
-                01
-            </div>
-
-            <div class="visual-cross cross-one">+</div>
-            <div class="visual-cross cross-two">+</div>
-
+            <div class="scene-glow"></div>
 
             <div class="orbit orbit-a"></div>
             <div class="orbit orbit-b"></div>
             <div class="orbit orbit-c"></div>
 
+            <div class="profile-card tilt">
 
-            <div class="energy-ring ring-one"></div>
-            <div class="energy-ring ring-two"></div>
-
-
-            <div class="photo-shadow"></div>
-
-            <div class="photo-frame back-frame"></div>
-
-
-            <div class="photo-card tilt">
-
-                <div class="photo-top">
-                    <span>PORTRAIT / 001</span>
-                    <span>2026</span>
+                <div class="card-top">
+                    <span>KS / 2026</span>
+                    <span>01—01</span>
                 </div>
 
-                <img
-                        src="AIPhoto.jpeg"
-                        alt="Kritika Singh"
-                >
+                <div class="profile-image-wrap">
+                    <img src="AIPhoto.jpeg" alt="Kritika Singh" class="profile-image">
+                    <div class="image-shine"></div>
+                </div>
 
-                <div class="photo-overlay"></div>
-
-                <div class="photo-scan"></div>
-
-                <div class="photo-bottom">
-
+                <div class="card-bottom">
                     <div>
-                        <small>SOFTWARE</small>
-                        <strong>ENGINEER</strong>
+                        <small>FOCUS</small>
+                        <strong>SOFTWARE<br>DEVELOPER</strong>
                     </div>
 
-                    <span>KS.</span>
-
-                </div>
-
-            </div>
-
-
-            <!-- FLOATING CARDS -->
-
-            <div class="floating-card card-java magnetic">
-                <span class="card-icon">☕</span>
-                <div>
-                    <small>PRIMARY</small>
-                    <b>JAVA</b>
+                    <div class="card-number">01</div>
                 </div>
             </div>
 
-
-            <div class="floating-card card-spring magnetic">
-                <span class="card-icon">✦</span>
-                <div>
-                    <small>FRAMEWORK</small>
-                    <b>SPRING BOOT</b>
-                </div>
-            </div>
-
-
-            <div class="floating-card card-api magnetic">
-                <span class="card-icon">⌁</span>
-                <div>
-                    <small>BUILDING</small>
-                    <b>REST APIs</b>
-                </div>
-            </div>
-
-
-            <div class="floating-card card-db magnetic">
-                <span class="card-icon">◉</span>
-                <div>
-                    <small>DATABASE</small>
-                    <b>POSTGRESQL</b>
-                </div>
-            </div>
-
-
-            <!-- CODE WINDOW -->
-
-            <div class="code-window">
-
+            <div class="floating-card code-card tilt">
                 <div class="code-head">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                    <small>kritika.java</small>
+                    <span></span><span></span><span></span>
+                    <em>Backend.java</em>
                 </div>
 
-                <pre><span>01</span> public class <i>Kritika</i> {
-<span>02</span>
-<span>03</span>     String stack =
-<span>04</span>       <b>"Java + Spring Boot"</b>;
-<span>05</span>
-<span>06</span>     String focus =
-<span>07</span>       <b>"Backend"</b>;
-<span>08</span> }</pre>
-
+                <div class="code-body">
+                    <span><i>01</i> <b>public</b> class <strong>Kritika</strong> {</span>
+                    <span><i>02</i>&nbsp;&nbsp; String stack = <mark>"Java"</mark>;</span>
+                    <span><i>03</i>&nbsp;&nbsp; SpringBoot boot = <strong>ready</strong>();</span>
+                    <span><i>04</i>&nbsp;&nbsp; API api = <strong>build</strong>();</span>
+                    <span><i>05</i>}</span>
+                </div>
             </div>
 
+            <div class="floating-chip chip-java">JAVA</div>
+            <div class="floating-chip chip-spring">SPRING BOOT</div>
+            <div class="floating-chip chip-api">REST API</div>
 
-            <div class="hand-text">
-                BUILD<br>
-                <i>BETTER.</i>
-            </div>
-
-
-            <div class="visual-label">
-                SCROLL TO<br>
-                EXPLORE ↓
+            <div class="rotating-circle">
+                <svg viewBox="0 0 200 200">
+                    <defs>
+                        <path id="circlePath"
+                              d="M 100,100 m -73,0 a 73,73 0 1,1 146,0 a 73,73 0 1,1 -146,0"/>
+                    </defs>
+                    <text>
+                        <textPath href="#circlePath">
+                            JAVA • SPRING BOOT • BACKEND • JAVA • SPRING BOOT • BACKEND •
+                        </textPath>
+                    </text>
+                </svg>
+                <span>↗</span>
             </div>
 
         </div>
 
-    </div>
+        <div class="scroll-indicator">
+            <span>SCROLL TO EXPLORE</span>
+            <div></div>
+        </div>
+
+    </section>
 
 
-    <div class="hero-bottom">
-
-        <span>CODE</span>
-        <b>•</b>
-        <span>LEARN</span>
-        <b>•</b>
-        <span>BUILD</span>
-        <b>•</b>
-        <span>REPEAT</span>
-
-    </div>
-
-</section>
-
-
-<!-- MARQUEE -->
-
-<section class="marquee">
-
-    <div class="marquee-track">
-
-        <span>JAVA</span>
-        <i>✦</i>
-        <span>SPRING BOOT</span>
-        <i>✦</i>
-        <span>SPRING SECURITY</span>
-        <i>✦</i>
-        <span>POSTGRESQL</span>
-        <i>✦</i>
-        <span>DOCKER</span>
-        <i>✦</i>
-        <span>REST APIs</span>
-        <i>✦</i>
-        <span>GIT &amp; GITHUB</span>
-        <i>✦</i>
-
-        <span>JAVA</span>
-        <i>✦</i>
-        <span>SPRING BOOT</span>
-        <i>✦</i>
-        <span>SPRING SECURITY</span>
-        <i>✦</i>
-        <span>POSTGRESQL</span>
-        <i>✦</i>
-        <span>DOCKER</span>
-        <i>✦</i>
-
-    </div>
-
-</section>
+    <section class="marquee-section">
+        <div class="marquee">
+            <span>JAVA</span><b>✦</b>
+            <span>SPRING BOOT</span><b>✦</b>
+            <span>REST APIs</span><b>✦</b>
+            <span>SQL</span><b>✦</b>
+            <span>DSA</span><b>✦</b>
+            <span>JAVA</span><b>✦</b>
+            <span>SPRING BOOT</span><b>✦</b>
+            <span>REST APIs</span><b>✦</b>
+        </div>
+    </section>
 
 
-<!-- ABOUT -->
+    <section class="section about" id="about">
 
-<section class="section about-section" id="about">
+        <div class="section-label reveal">
+            <span>01</span>
+            ABOUT ME
+        </div>
 
-    <div class="section-number">
-        01 / ABOUT
-    </div>
+        <div class="about-layout">
 
-    <div class="section-intro">
+            <div class="about-big reveal">
+                <span>BUILDING</span>
+                <span class="outline">LOGIC.</span>
+                <span>BEHIND THE</span>
+                <span class="purple-text">SCENES.</span>
+            </div>
 
-        <span class="eyebrow">
-            WHO I AM
-        </span>
+            <div class="about-copy">
+                <p class="large-copy reveal">
+                    I'm <strong>Kritika Singh</strong>, a Software Engineer
+                    focused on backend development and Java-based systems.
+                </p>
 
-        <h2>
-            I build
-            <span>systems</span>
-            that make
-            <em>ideas work.</em>
-        </h2>
+                <p class="reveal">
+                    My core focus is building structured backend applications
+                    with Java, Spring Boot, REST APIs, SQL, OOP and DSA.
+                    I enjoy turning ideas into practical, maintainable software.
+                </p>
 
-    </div>
+                <div class="stats reveal">
+                    <div>
+                        <strong data-count="2">02</strong>
+                        <span>PROJECTS</span>
+                    </div>
+
+                    <div>
+                        <strong data-count="7">07</strong>
+                        <span>CERTIFICATIONS</span>
+                    </div>
+
+                    <div>
+                        <strong>2026</strong>
+                        <span>B.TECH</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
 
-    <div class="about-content">
+    <section class="section skills-section" id="skills">
 
-        <p class="big-about">
-            I'm <strong>Kritika Singh</strong>, a Software Engineer
-            focused on Java, Spring Boot and backend development.
-        </p>
+        <div class="section-label reveal">
+            <span>02</span>
+            TECH STACK
+        </div>
 
-        <p class="normal-about">
-            I enjoy building clean, secure and scalable applications
-            while continuously improving my problem-solving and
-            software development skills.
-        </p>
+        <div class="skills-heading reveal">
+            <h2>TOOLS I<br><i>BUILD WITH.</i></h2>
+        </div>
 
+        <div class="skill-universe">
 
-        <div class="about-cards">
+            <div class="skill-center">
+                <div>
+                    <small>PRIMARY</small>
+                    <strong>JAVA</strong>
+                    <span>BACKEND</span>
+                </div>
+            </div>
+
+            <div class="skill-ring ring-1">
+                <div class="skill-node n1">JAVA</div>
+                <div class="skill-node n2">SPRING</div>
+                <div class="skill-node n3">SQL</div>
+            </div>
+
+            <div class="skill-ring ring-2">
+                <div class="skill-node n4">REST</div>
+                <div class="skill-node n5">JPA</div>
+                <div class="skill-node n6">GIT</div>
+            </div>
+
+            <div class="skill-ring ring-3">
+                <div class="skill-node n7">DOCKER</div>
+                <div class="skill-node n8">MONGODB</div>
+                <div class="skill-node n9">DSA</div>
+            </div>
+
+        </div>
+
+        <div class="skills-list reveal">
 
             <div>
                 <span>01</span>
-                <b>JAVA</b>
-                <small>PRIMARY LANGUAGE</small>
+                <strong>LANGUAGES</strong>
+                <p>Java · JavaScript · Python · SQL</p>
             </div>
 
             <div>
                 <span>02</span>
-                <b>BACKEND</b>
-                <small>CORE FOCUS</small>
+                <strong>BACKEND</strong>
+                <p>Spring Boot · Spring Security · REST APIs · Hibernate · JPA</p>
             </div>
 
             <div>
                 <span>03</span>
-                <b>REST</b>
-                <small>API DEVELOPMENT</small>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SKILLS -->
-
-<section class="section skills-section" id="skills">
-
-    <div class="section-number">
-        02 / SKILLS
-    </div>
-
-    <span class="eyebrow">
-        MY TOOLKIT
-    </span>
-
-    <h2 class="section-title">
-        Tech I use to
-        <span>build.</span>
-    </h2>
-
-
-    <div class="skills-universe">
-
-        <div class="universe-glow"></div>
-
-        <div class="universe-center">
-            <span>KS</span>
-            <small>STACK</small>
-        </div>
-
-        <div class="skill-orbit orbit-1"></div>
-        <div class="skill-orbit orbit-2"></div>
-        <div class="skill-orbit orbit-3"></div>
-
-
-        <div class="skill-pill pill-1">☕ Java</div>
-        <div class="skill-pill pill-2">🌱 Spring Boot</div>
-        <div class="skill-pill pill-3">🛡 Spring Security</div>
-        <div class="skill-pill pill-4">◉ PostgreSQL</div>
-        <div class="skill-pill pill-5">⌘ REST APIs</div>
-        <div class="skill-pill pill-6">◈ Docker</div>
-        <div class="skill-pill pill-7">{ } DSA</div>
-
-    </div>
-
-
-    <div class="skill-list">
-
-        <div>
-            <span>01</span>
-            <b>Languages</b>
-            <p>Java, JavaScript</p>
-        </div>
-
-        <div>
-            <span>02</span>
-            <b>Backend</b>
-            <p>Spring Boot, Spring Security</p>
-        </div>
-
-        <div>
-            <span>03</span>
-            <b>Database</b>
-            <p>PostgreSQL, MySQL</p>
-        </div>
-
-        <div>
-            <span>04</span>
-            <b>ORM</b>
-            <p>JPA, Hibernate</p>
-        </div>
-
-        <div>
-            <span>05</span>
-            <b>Tools</b>
-            <p>Git, GitHub, Docker</p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROJECTS -->
-
-<section class="section projects-section" id="projects">
-
-    <div class="section-number">
-        03 / PROJECTS
-    </div>
-
-    <span class="eyebrow">
-        REAL PROJECTS
-    </span>
-
-    <h2 class="section-title">
-        Things I've
-        <span>built.</span>
-    </h2>
-
-
-    <!-- PROJECT ONE -->
-
-    <article class="project-card project-one reveal-card">
-
-        <div class="project-number">
-            01
-        </div>
-
-        <div class="project-info">
-
-            <small>
-                BACKEND / FULL STACK
-            </small>
-
-            <h3>
-                URL Shortener
-                <span>Application</span>
-            </h3>
-
-            <p>
-                A secure, database-driven URL Shortener application
-                built using Java and Spring Boot with authentication,
-                authorization and analytics.
-            </p>
-
-
-            <div class="project-tags">
-
-                <i>Java</i>
-                <i>Spring Boot</i>
-                <i>Spring Security</i>
-                <i>JPA</i>
-                <i>Hibernate</i>
-                <i>PostgreSQL</i>
-                <i>Flyway</i>
-                <i>Docker</i>
-
-            </div>
-
-
-            <a
-                    href="https://github.com/KritikaaSinghh/kritika-url-shortener"
-                    target="_blank"
-                    class="project-link"
-            >
-                View Repository
-                <span>↗</span>
-            </a>
-
-        </div>
-
-
-        <div class="project-visual url-visual">
-
-            <div class="browser-window">
-
-                <div class="browser-top">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-                <div class="browser-content">
-
-                    <small>URL SHORTENER</small>
-
-                    <div class="url-input">
-                        <span>https://kritika.dev/</span>
-                        <b>SHORTEN</b>
-                    </div>
-
-                    <div class="analytics">
-
-                        <div class="analytics-number">
-                            <small>CLICKS</small>
-                            <strong>2,847</strong>
-                        </div>
-
-                        <div class="bars-chart">
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </article>
-
-
-    <!-- PROJECT TWO -->
-
-    <article class="project-card project-two reveal-card">
-
-        <div class="project-number">
-            02
-        </div>
-
-        <div class="project-info">
-
-            <small>
-                FRONTEND / INTERACTIVE
-            </small>
-
-            <h3>
-                Sorting
-                <span>Visualizer</span>
-            </h3>
-
-            <p>
-                An interactive web application that visualizes
-                popular sorting algorithms through real-time
-                animations, speed controls and complexity information.
-            </p>
-
-
-            <div class="project-tags">
-
-                <i>HTML</i>
-                <i>CSS</i>
-                <i>JavaScript</i>
-
-            </div>
-
-
-            <div class="project-links">
-
-                <a
-                        href="https://github.com/KritikaaSinghh/Sorting-Visualizer"
-                        target="_blank"
-                        class="project-link"
-                >
-                    GitHub <span>↗</span>
-                </a>
-
-                <a
-                        href="https://kritikaasinghh.github.io/Sorting-Visualizer/"
-                        target="_blank"
-                        class="project-link"
-                >
-                    Live Demo <span>↗</span>
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="project-visual sorting-visual">
-
-            <div class="sort-window">
-
-                <div class="sort-top">
-                    <span>SORTING VISUALIZER</span>
-                    <b>QUICK SORT</b>
-                </div>
-
-                <div class="sort-bars"></div>
-
-                <div class="sort-controls">
-                    <span>← SPEED →</span>
-                    <span>RESET</span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</section>
-
-
-<!-- PROCESS -->
-
-<section class="section process-section">
-
-    <div class="section-number">
-        04 / PROCESS
-    </div>
-
-    <span class="eyebrow">
-        HOW I BUILD
-    </span>
-
-    <h2 class="section-title">
-        From idea
-        <span>to system.</span>
-    </h2>
-
-
-    <div class="process-grid">
-
-        <div class="process-item">
-
-            <span>01</span>
-
-            <h3>Understand</h3>
-
-            <p>
-                Break the problem down and understand what
-                the system needs to solve.
-            </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-            <span>02</span>
-
-            <h3>Design</h3>
-
-            <p>
-                Think about architecture, APIs, database
-                structure and clean separation of concerns.
-            </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-            <span>03</span>
-
-            <h3>Build</h3>
-
-            <p>
-                Turn the design into maintainable Java and
-                Spring Boot code.
-            </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-            <span>04</span>
-
-            <h3>Improve</h3>
-
-            <p>
-                Test, debug, optimize and continuously learn.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- EDUCATION -->
-
-<section class="section education-section" id="education">
-
-    <div class="section-number">
-        05 / EDUCATION
-    </div>
-
-    <div class="education-layout">
-
-        <div>
-
-            <span class="eyebrow">
-                ACADEMIC JOURNEY
-            </span>
-
-            <h2 class="section-title">
-                B.Tech in
-                <span>Computer Science.</span>
-            </h2>
-
-        </div>
-
-
-        <div class="education-card">
-
-            <div class="education-year">
-                2026
+                <strong>DATABASE</strong>
+                <p>PostgreSQL · MongoDB</p>
             </div>
 
             <div>
-
-                <h3>
-                    Bachelor of Technology
-                </h3>
-
-                <p>
-                    Computer Science &amp; Engineering
-                    (Internet of Things)
-                </p>
-
-                <strong>
-                    Meerut Institute of Engineering and Technology
-                    (MIET)
-                </strong>
-
-                <small>
-                    Meerut, Uttar Pradesh
-                </small>
-
+                <span>04</span>
+                <strong>TOOLS</strong>
+                <p>Git · GitHub · Docker · Flyway · Thymeleaf</p>
             </div>
 
         </div>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- CERTIFICATIONS -->
+    <section class="section projects" id="projects">
 
-<section class="section certifications-section">
-
-    <div class="section-number">
-        06 / CERTIFICATIONS
-    </div>
-
-    <span class="eyebrow">
-        LEARNING NEVER STOPS
-    </span>
-
-    <h2 class="section-title">
-        Certifications &
-        <span>learning.</span>
-    </h2>
-
-
-    <div class="cert-list">
-
-        <div>
-            <span>01</span>
-            <b>Java Complete Course</b>
-            <small>Udemy · 2025</small>
-        </div>
-
-        <div>
-            <span>02</span>
-            <b>Practical SQL</b>
-            <small>Udemy · 2025</small>
-        </div>
-
-        <div>
+        <div class="section-label reveal">
             <span>03</span>
-            <b>MongoDB Basics</b>
-            <small>MongoDB · 2025</small>
+            SELECTED WORK
         </div>
 
-        <div>
-            <span>04</span>
-            <b>CCNA: Introduction to Networks</b>
-            <small>Cisco · 2025</small>
+        <div class="projects-title reveal">
+            <h2>THINGS I'VE<br><span>BUILT.</span></h2>
         </div>
 
-        <div>
-            <span>05</span>
-            <b>JavaScript Course</b>
-            <small>Udemy · 2024</small>
-        </div>
+        <article class="project project-one">
 
-        <div>
-            <span>06</span>
-            <b>Python for Machine Learning</b>
-            <small>Great Learning · 2024</small>
-        </div>
+            <div class="project-number">01</div>
 
-        <div>
-            <span>07</span>
-            <b>Generative AI &amp; AI for Leaders</b>
-            <small>Udemy · 2025</small>
-        </div>
+            <div class="project-info reveal">
+                <div class="project-type">BACKEND APPLICATION</div>
 
-    </div>
+                <h3>URL<br><i>SHORTENER</i></h3>
 
-</section>
+                <p>
+                    A database-driven URL shortener built with MVC architecture,
+                    secure authentication and authorization, and analytics.
+                </p>
 
+                <div class="tech-stack">
+                    <span>JAVA</span>
+                    <span>SPRING BOOT</span>
+                    <span>SPRING SECURITY</span>
+                    <span>JPA</span>
+                    <span>POSTGRESQL</span>
+                    <span>DOCKER</span>
+                </div>
 
-<!-- CONTACT -->
-
-<section class="section contact-section" id="contact">
-
-    <div class="section-number">
-        07 / CONTACT
-    </div>
-
-    <span class="eyebrow">
-        HAVE AN IDEA?
-    </span>
-
-    <h2 class="contact-title">
-        Let's make
-        <span>something.</span>
-    </h2>
-
-
-    <div class="contact-grid">
-
-        <div class="contact-left">
-
-            <p class="contact-intro">
-                I'm interested in building meaningful software
-                and connecting with people working on interesting ideas.
-            </p>
-
-
-            <div class="contact-details">
-
-                <a href="mailto:singhkritika8449@gmail.com">
-
-                    <span>EMAIL</span>
-
-                    <b>
-                        singhkritika8449@gmail.com
-                    </b>
-
-                    <i>↗</i>
-
+                <a href="https://github.com/KritikaaSinghh/kritika-url-shortener"
+                   target="_blank"
+                   class="project-link magnetic">
+                    VIEW ON GITHUB <span>↗</span>
                 </a>
+            </div>
+
+            <div class="project-visual visual-url tilt">
+
+                <div class="window">
+                    <div class="window-bar">
+                        <div class="window-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <small>url-shortener</small>
+                    </div>
+
+                    <div class="url-ui">
+                        <small>CREATE SHORT URL</small>
+
+                        <div class="fake-input">
+                            https://example.com/very-long-url
+                        </div>
+
+                        <div class="short-result">
+                            <span>short.url</span>
+                            <strong>/ks92x</strong>
+                        </div>
+
+                        <div class="analytics">
+                            <div><b>2.4K</b><small>CLICKS</small></div>
+                            <div><b>98%</b><small>UPTIME</small></div>
+                            <div><b>24</b><small>LINKS</small></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
 
 
+        <article class="project project-two">
+
+            <div class="project-number">02</div>
+
+            <div class="project-info reveal">
+                <div class="project-type">INTERACTIVE WEB PROJECT</div>
+
+                <h3>SORTING<br><i>VISUALIZER</i></h3>
+
+                <p>
+                    An interactive sorting visualizer with real-time animations,
+                    speed controls and algorithm complexity information.
+                </p>
+
+                <div class="tech-stack">
+                    <span>JAVA</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JAVASCRIPT</span>
+                </div>
+
+                <div class="project-buttons">
+                    <a href="https://github.com/KritikaaSinghh/Sorting-Visualizer"
+                       target="_blank"
+                       class="project-link magnetic">
+                        GITHUB ↗
+                    </a>
+
+                    <a href="https://kritikaasinghh.github.io/Sorting-Visualizer/"
+                       target="_blank"
+                       class="project-link filled magnetic">
+                        LIVE DEMO ↗
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-visual visual-sort tilt">
+
+                <div class="sort-window">
+
+                    <div class="sort-header">
+                        <span>SORTING VISUALIZER</span>
+                        <em>LIVE</em>
+                    </div>
+
+                    <div class="bars">
+                        <i style="height:28%"></i>
+                        <i style="height:62%"></i>
+                        <i style="height:43%"></i>
+                        <i style="height:84%"></i>
+                        <i style="height:35%"></i>
+                        <i style="height:72%"></i>
+                        <i style="height:51%"></i>
+                        <i style="height:94%"></i>
+                        <i style="height:45%"></i>
+                        <i style="height:76%"></i>
+                        <i style="height:30%"></i>
+                        <i style="height:67%"></i>
+                        <i style="height:88%"></i>
+                        <i style="height:38%"></i>
+                        <i style="height:59%"></i>
+                    </div>
+
+                    <div class="sort-footer">
+                        <span>BUBBLE SORT</span>
+                        <span>O(n²)</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <section class="section process">
+
+        <div class="section-label reveal">
+            <span>04</span>
+            HOW I BUILD
+        </div>
+
+        <div class="process-title reveal">
+            <h2>FROM IDEA<br>TO <i>IMPACT.</i></h2>
+        </div>
+
+        <div class="process-grid">
+
+            <div class="process-card reveal">
+                <span>01</span>
+                <div class="process-icon">⌁</div>
+                <h3>UNDERSTAND</h3>
+                <p>Break the problem down and understand what actually needs to be built.</p>
+            </div>
+
+            <div class="process-card reveal">
+                <span>02</span>
+                <div class="process-icon">◇</div>
+                <h3>DESIGN</h3>
+                <p>Structure clean logic, APIs, data flow and maintainable architecture.</p>
+            </div>
+
+            <div class="process-card reveal">
+                <span>03</span>
+                <div class="process-icon">↯</div>
+                <h3>BUILD</h3>
+                <p>Turn the design into working software using modern development practices.</p>
+            </div>
+
+            <div class="process-card reveal">
+                <span>04</span>
+                <div class="process-icon">✦</div>
+                <h3>IMPROVE</h3>
+                <p>Test, debug and continuously improve the final product.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="section education">
+
+        <div class="section-label reveal">
+            <span>05</span>
+            EDUCATION
+        </div>
+
+        <div class="education-card reveal">
+
+            <div class="edu-year">2026</div>
+
+            <div class="edu-main">
+                <span>BACHELOR OF TECHNOLOGY</span>
+                <h2>COMPUTER SCIENCE &<br>ENGINEERING <i>(IOT)</i></h2>
+                <p>
+                    Meerut Institute of Engineering and Technology (MIET),
+                    Meerut, Uttar Pradesh
+                </p>
+            </div>
+
+            <div class="edu-mark">MIET<br>✦</div>
+
+        </div>
+    </section>
+
+
+    <section class="section certifications">
+
+        <div class="section-label reveal">
+            <span>06</span>
+            CERTIFICATIONS
+        </div>
+
+        <div class="cert-list">
+
+            <div class="cert reveal">
+                <span>01</span>
                 <div>
+                    <h3>Java Complete Course</h3>
+                    <p>Udemy · 2025</p>
+                </div>
+                <b>↗</b>
+            </div>
 
-                    <span>LOCATION</span>
+            <div class="cert reveal">
+                <span>02</span>
+                <div>
+                    <h3>Practical SQL</h3>
+                    <p>Udemy · 2025</p>
+                </div>
+                <b>↗</b>
+            </div>
 
-                    <b>
-                        New Delhi, India
-                    </b>
+            <div class="cert reveal">
+                <span>03</span>
+                <div>
+                    <h3>MongoDB Basics</h3>
+                    <p>MongoDB · 2025</p>
+                </div>
+                <b>↗</b>
+            </div>
 
-                    <i>◉</i>
+            <div class="cert reveal">
+                <span>04</span>
+                <div>
+                    <h3>CCNA: Introduction to Networks</h3>
+                    <p>Cisco · 2025</p>
+                </div>
+                <b>↗</b>
+            </div>
+
+            <div class="cert reveal">
+                <span>05</span>
+                <div>
+                    <h3>JavaScript Course</h3>
+                    <p>Udemy · 2024</p>
+                </div>
+                <b>↗</b>
+            </div>
+
+            <div class="cert reveal">
+                <span>06</span>
+                <div>
+                    <h3>Python for Machine Learning</h3>
+                    <p>Great Learning · 2024</p>
+                </div>
+                <b>↗</b>
+            </div>
+
+            <div class="cert reveal">
+                <span>07</span>
+                <div>
+                    <h3>Generative AI & AI for Leaders</h3>
+                    <p>Udemy · 2025</p>
+                </div>
+                <b>↗</b>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="contact" id="contact">
+
+        <div class="contact-bg-text">LET'S<br>BUILD.</div>
+
+        <div class="contact-inner">
+
+            <div class="section-label reveal">
+                <span>07</span>
+                CONTACT
+            </div>
+
+            <div class="contact-heading reveal">
+                <h2>HAVE AN IDEA?</h2>
+                <h2><i>LET'S BUILD IT.</i></h2>
+            </div>
+
+            <div class="contact-layout">
+
+                <div class="contact-details reveal">
+
+                    <p>
+                        Whether it's a project, opportunity or just a conversation
+                        about technology — my inbox is open.
+                    </p>
+
+                    <a href="mailto:singhkritika8449@gmail.com" class="email-link">
+                        singhkritika8449@gmail.com ↗
+                    </a>
+
+                    <div class="socials">
+
+                        <a href="https://github.com/KritikaaSinghh"
+                           target="_blank">
+                            GITHUB
+                            <span>↗</span>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/kritikaasinghh"
+                           target="_blank">
+                            LINKEDIN
+                            <span>↗</span>
+                        </a>
+
+                    </div>
+
+                    <div class="location">
+                        <span class="live-dot"></span>
+                        NEW DELHI, INDIA
+                    </div>
 
                 </div>
 
 
-                <a
-                        href="https://github.com/KritikaaSinghh"
-                        target="_blank"
-                >
+                <form id="contactForm" class="contact-form reveal">
 
-                    <span>GITHUB</span>
+                    <input type="hidden" name="_subject" value="Portfolio Contact — Kritika Singh">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
 
-                    <b>
-                        github.com/KritikaaSinghh
-                    </b>
+                    <input type="text"
+                           name="_honey"
+                           tabindex="-1"
+                           autocomplete="off"
+                           class="honeypot">
 
-                    <i>↗</i>
+                    <label>
+                        <span>01 / NAME</span>
+                        <input type="text"
+                               name="name"
+                               placeholder="Your name"
+                               required>
+                    </label>
 
-                </a>
+                    <label>
+                        <span>02 / EMAIL</span>
+                        <input type="email"
+                               name="email"
+                               placeholder="your@email.com"
+                               required>
+                    </label>
 
+                    <label>
+                        <span>03 / MESSAGE</span>
+                        <textarea name="message"
+                                  placeholder="Tell me what you're building..."
+                                  required></textarea>
+                    </label>
 
-                <a
-                        href="https://www.linkedin.com/in/kritikaasinghh"
-                        target="_blank"
-                >
+                    <button type="submit" class="send-btn magnetic">
+                        <span>SEND MESSAGE</span>
+                        <b>↗</b>
+                    </button>
 
-                    <span>LINKEDIN</span>
+                    <div id="formStatus"></div>
 
-                    <b>
-                        linkedin.com/in/kritikaasinghh
-                    </b>
-
-                    <i>↗</i>
-
-                </a>
+                </form>
 
             </div>
-
         </div>
+    </section>
 
+</main>
 
-        <!-- FORM -->
-
-        <form id="contactForm">
-
-            <div class="form-heading">
-                <span>DROP A MESSAGE</span>
-                <b>↘</b>
-            </div>
-
-
-            <div class="form-row">
-
-                <label>
-                    YOUR NAME
-
-                    <input
-                            type="text"
-                            name="name"
-                            placeholder="Your name"
-                            required
-                    >
-
-                </label>
-
-
-                <label>
-                    YOUR EMAIL
-
-                    <input
-                            type="email"
-                            name="email"
-                            placeholder="you@example.com"
-                            required
-                    >
-
-                </label>
-
-            </div>
-
-
-            <label>
-                YOUR MESSAGE
-
-                <textarea
-                        name="message"
-                        placeholder="Tell me about your idea..."
-                        required
-                ></textarea>
-
-            </label>
-
-
-            <input
-                    type="hidden"
-                    name="_subject"
-                    value="New Portfolio Message — Kritika Singh"
-            >
-
-            <input
-                    type="hidden"
-                    name="_template"
-                    value="table"
-            >
-
-            <input
-                    type="hidden"
-                    name="_captcha"
-                    value="false"
-            >
-
-            <input
-                    class="honey"
-                    name="_honey"
-                    tabindex="-1"
-                    autocomplete="off"
-            >
-
-
-            <button
-                    type="submit"
-                    class="send-button"
-            >
-                <span id="submitText">
-                    SEND MESSAGE
-                </span>
-
-                <b>↗</b>
-            </button>
-
-
-            <p id="formStatus"></p>
-
-        </form>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
 
 <footer>
 
@@ -1119,32 +721,20 @@
             KS<span>.</span>
         </div>
 
-        <div class="footer-big">
-            KEEP<br>
-            <span>BUILDING.</span>
-        </div>
+        <p>JAVA · SPRING · BACKEND</p>
 
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <span>
-            JAVA • SPRING BOOT • BACKEND DEVELOPMENT
-        </span>
-
-        <span>
-            © 2026 KRITIKA SINGH
-        </span>
-
-        <a href="#home">
+        <a href="#home" class="back-top magnetic">
             BACK TO TOP ↑
         </a>
 
     </div>
 
-</footer>
+    <div class="footer-bottom">
+        <span>© 2026 KRITIKA SINGH</span>
+        <span>BUILT WITH LOGIC & CURIOSITY</span>
+    </div>
 
+</footer>
 
 <script src="script.js"></script>
 
