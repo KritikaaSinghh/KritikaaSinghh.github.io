@@ -1,665 +1,505 @@
-/* =========================================================
-   KRITIKA SINGH — CRAZY INTERACTIVE PORTFOLIO
-   ========================================================= */
+/* =========================
+   PORTFOLIO ENGINE
+========================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* -----------------------------------------------------
-       PARTICLE / SPACE CANVAS
-    ----------------------------------------------------- */
+    document.body.classList.add("loading");
 
-    const canvas = document.getElementById("space");
+    /* =========================
+       LOADER
+    ========================= */
+
+    setTimeout(() => {
+        const loader = document.getElementById("loader");
+
+        if (loader) {
+            loader.classList.add("hide");
+            document.body.classList.remove("loading");
+        }
+    }, 1550);
+
+
+    /* =========================
+       STAR FIELD
+    ========================= */
+
+    const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d");
 
-    let particles = [];
-    let mouse = {
-        x: window.innerWidth / 2,
-        y: window.innerHeight / 2
-    };
+    let width;
+    let height;
+    let stars = [];
 
     function resizeCanvas() {
-        canvas.width = window.innerWidth * devicePixelRatio;
-        canvas.height = window.innerHeight * devicePixelRatio;
-        canvas.style.width = window.innerWidth + "px";
-        canvas.style.height = window.innerHeight + "px";
-        ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
 
-        createParticles();
+        const amount = Math.min(180, Math.floor((width * height) / 9000));
+
+        stars = Array.from({ length: amount }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            size: Math.random() * 1.5 + .2,
+            speed: Math.random() * .25 + .05,
+            alpha: Math.random() * .7 + .2,
+            twinkle: Math.random() * .03
+        }));
     }
 
-    function createParticles() {
-
-        const amount = Math.min(
-            130,
-            Math.floor(window.innerWidth / 10)
-        );
-
-        particles = [];
-
-        for (let i = 0; i < amount; i++) {
-
-            particles.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                size: Math.random() * 1.5 + .2,
-                speedX: (Math.random() - .5) * .18,
-                speedY: (Math.random() - .5) * .18,
-                alpha: Math.random() * .6 + .1
-            });
-        }
-    }
-
-    function animateSpace() {
-
-        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-        particles.forEach((p, index) => {
-
-            p.x += p.speedX;
-            p.y += p.speedY;
-
-            if (p.x < 0) p.x = window.innerWidth;
-            if (p.x > window.innerWidth) p.x = 0;
-
-            if (p.y < 0) p.y = window.innerHeight;
-            if (p.y > window.innerHeight) p.y = 0;
-
-            const distanceMouse =
-                Math.hypot(
-                    p.x - mouse.x,
-                    p.y - mouse.y
-                );
-
-            const glow =
-                distanceMouse < 220
-                    ? (1 - distanceMouse / 220)
-                    : 0;
-
-            ctx.beginPath();
-
-            ctx.arc(
-                p.x,
-                p.y,
-                p.size + glow * 1.5,
-                0,
-                Math.PI * 2
-            );
-
-            ctx.fillStyle =
-                `rgba(174,130,255,${p.alpha + glow * .5})`;
-
-            ctx.fill();
-
-            for (
-                let j = index + 1;
-                j < particles.length;
-                j++
-            ) {
-
-                const q = particles[j];
-
-                const dx = p.x - q.x;
-                const dy = p.y - q.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 105) {
-
-                    ctx.beginPath();
-
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(q.x, q.y);
-
-                    ctx.strokeStyle =
-                        `rgba(139,77,255,${(
-                            .10 * (1 - distance / 105)
-                        )})`;
-
-                    ctx.lineWidth = .5;
-                    ctx.stroke();
-                }
-            }
-        });
-
-        requestAnimationFrame(animateSpace);
-    }
+    resizeCanvas();
 
     window.addEventListener("resize", resizeCanvas);
 
-    window.addEventListener("mousemove", e => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-    });
+    function drawStars() {
+        ctx.clearRect(0, 0, width, height);
 
-    resizeCanvas();
-    animateSpace();
+        stars.forEach(star => {
 
+            star.y -= star.speed;
 
-    /* -----------------------------------------------------
-       CUSTOM CURSOR
-    ----------------------------------------------------- */
+            if (star.y < -5) {
+                star.y = height + 5;
+                star.x = Math.random() * width;
+            }
 
-    const cursor = document.querySelector(".cursor");
-    const ring = document.querySelector(".cursor-ring");
+            star.alpha += star.twinkle;
 
-    let cursorX = window.innerWidth / 2;
-    let cursorY = window.innerHeight / 2;
-    let ringX = cursorX;
-    let ringY = cursorY;
+            if (star.alpha > .95 || star.alpha < .15) {
+                star.twinkle *= -1;
+            }
 
-    document.addEventListener("mousemove", e => {
-        cursorX = e.clientX;
-        cursorY = e.clientY;
-    });
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
 
-    function cursorAnimation() {
+            ctx.fillStyle = `rgba(190,140,255,${star.alpha})`;
+            ctx.fill();
+        });
 
-        cursor.style.left = cursorX + "px";
-        cursor.style.top = cursorY + "px";
-
-        ringX += (cursorX - ringX) * .15;
-        ringY += (cursorY - ringY) * .15;
-
-        ring.style.left = ringX + "px";
-        ring.style.top = ringY + "px";
-
-        requestAnimationFrame(cursorAnimation);
+        requestAnimationFrame(drawStars);
     }
 
-    cursorAnimation();
+    drawStars();
 
-    const interactiveElements =
-        document.querySelectorAll(
-            "a,button,.tilt,.cert,.process-card"
-        );
 
-    interactiveElements.forEach(el => {
+    /* =========================
+       CUSTOM CURSOR
+    ========================= */
+
+    const cursor = document.querySelector(".cursor");
+    const cursorRing = document.querySelector(".cursor-ring");
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    let ringX = mouseX;
+    let ringY = mouseY;
+
+    window.addEventListener("mousemove", e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (cursor) {
+            cursor.style.left = `${mouseX}px`;
+            cursor.style.top = `${mouseY}px`;
+        }
+    });
+
+    function animateCursor() {
+
+        ringX += (mouseX - ringX) * .13;
+        ringY += (mouseY - ringY) * .13;
+
+        if (cursorRing) {
+            cursorRing.style.left = `${ringX}px`;
+            cursorRing.style.top = `${ringY}px`;
+        }
+
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    document.querySelectorAll("a, button, .project-card, .skill-node").forEach(el => {
 
         el.addEventListener("mouseenter", () => {
-            ring.classList.add("big");
+            document.body.classList.add("hovering");
         });
 
         el.addEventListener("mouseleave", () => {
-            ring.classList.remove("big");
+            document.body.classList.remove("hovering");
+        });
+
+    });
+
+
+    /* =========================
+       HERO PARALLAX
+    ========================= */
+
+    const heroVisual = document.querySelector(".hero-visual");
+
+    window.addEventListener("mousemove", e => {
+
+        if (!heroVisual || window.innerWidth < 800) return;
+
+        const x = (e.clientX / window.innerWidth - .5);
+        const y = (e.clientY / window.innerHeight - .5);
+
+        heroVisual.style.setProperty("--mx", `${x * 18}px`);
+        heroVisual.style.setProperty("--my", `${y * 18}px`);
+
+        heroVisual.querySelectorAll(".floating-card").forEach((card, index) => {
+            const factor = (index + 1) * .5;
+
+            card.style.translate =
+                `${x * factor * 15}px ${y * factor * 15}px`;
         });
     });
 
 
-    /* -----------------------------------------------------
-       SCROLL PROGRESS
-    ----------------------------------------------------- */
+    /* =========================
+       3D TILT
+    ========================= */
 
-    const progress =
-        document.querySelector(".scroll-progress");
-
-    function updateProgress() {
-
-        const scrollTop = window.scrollY;
-
-        const height =
-            document.documentElement.scrollHeight -
-            window.innerHeight;
-
-        const percentage =
-            height > 0
-                ? (scrollTop / height) * 100
-                : 0;
-
-        progress.style.width = percentage + "%";
-    }
-
-    window.addEventListener("scroll", updateProgress);
-    updateProgress();
-
-
-    /* -----------------------------------------------------
-       REVEAL ON SCROLL
-    ----------------------------------------------------- */
-
-    const revealElements =
-        document.querySelectorAll(".reveal");
-
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add("visible");
-
-                        revealObserver.unobserve(entry.target);
-                    }
-                });
-
-            },
-            {
-                threshold: .12
-            }
-        );
-
-    revealElements.forEach(el => {
-        revealObserver.observe(el);
-    });
-
-
-    /* -----------------------------------------------------
-       3D TILT CARDS
-    ----------------------------------------------------- */
-
-    const tiltCards =
-        document.querySelectorAll(".tilt");
-
-    tiltCards.forEach(card => {
+    document.querySelectorAll("[data-tilt]").forEach(card => {
 
         card.addEventListener("mousemove", e => {
 
-            const rect =
-                card.getBoundingClientRect();
+            if (window.innerWidth < 800) return;
 
-            const x =
-                e.clientX - rect.left;
+            const rect = card.getBoundingClientRect();
 
-            const y =
-                e.clientY - rect.top;
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateY =
-                ((x - centerX) / centerX) * 8;
-
-            const rotateX =
-                ((centerY - y) / centerY) * 8;
+            const rotateX = ((y / rect.height) - .5) * -10;
+            const rotateY = ((x / rect.width) - .5) * 10;
 
             card.style.transform =
-                `perspective(1000px)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)
-                 translateZ(10px)`;
+                `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
         });
 
         card.addEventListener("mouseleave", () => {
-            card.style.transform =
-                "";
+            card.style.transform = "";
         });
     });
 
 
-    /* -----------------------------------------------------
+    /* =========================
        MAGNETIC BUTTONS
-    ----------------------------------------------------- */
+    ========================= */
 
-    const magnets =
-        document.querySelectorAll(".magnetic");
+    document.querySelectorAll(".magnetic").forEach(button => {
 
-    magnets.forEach(el => {
-
-        el.addEventListener("mousemove", e => {
-
-            const rect =
-                el.getBoundingClientRect();
-
-            const x =
-                e.clientX - rect.left - rect.width / 2;
-
-            const y =
-                e.clientY - rect.top - rect.height / 2;
-
-            el.style.transform =
-                `translate(${x * .15}px,${y * .15}px)`;
-        });
-
-        el.addEventListener("mouseleave", () => {
-            el.style.transform = "";
-        });
-    });
-
-
-    /* -----------------------------------------------------
-       HERO MOUSE PARALLAX
-    ----------------------------------------------------- */
-
-    const scene =
-        document.querySelector(".scene");
-
-    if (scene) {
-
-        document.addEventListener("mousemove", e => {
+        button.addEventListener("mousemove", e => {
 
             if (window.innerWidth < 800) return;
 
-            const x =
-                (e.clientX / window.innerWidth - .5);
+            const rect = button.getBoundingClientRect();
 
-            const y =
-                (e.clientY / window.innerHeight - .5);
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
 
-            scene.style.transform =
-                `translateY(-47%)
-                 rotateX(${y * -3}deg)
-                 rotateY(${x * 5}deg)`;
+            button.style.transform =
+                `translate(${x * .12}px, ${y * .12}px)`;
         });
-    }
 
+        button.addEventListener("mouseleave", () => {
+            button.style.transform = "";
+        });
 
-    /* -----------------------------------------------------
-       COUNTERS
-    ----------------------------------------------------- */
-
-    const counters =
-        document.querySelectorAll("[data-count]");
-
-    const counterObserver =
-        new IntersectionObserver(entries => {
-
-            entries.forEach(entry => {
-
-                if (!entry.isIntersecting) return;
-
-                const element = entry.target;
-                const target =
-                    Number(element.dataset.count);
-
-                let current = 0;
-
-                const interval =
-                    setInterval(() => {
-
-                        current++;
-
-                        element.textContent =
-                            String(current).padStart(2, "0");
-
-                        if (current >= target) {
-                            clearInterval(interval);
-                        }
-
-                    }, 120);
-
-                counterObserver.unobserve(element);
-            });
-
-        }, { threshold: .7 });
-
-    counters.forEach(counter => {
-        counterObserver.observe(counter);
     });
 
 
-    /* -----------------------------------------------------
-       SKILL UNIVERSE MOUSE ROTATION
-    ----------------------------------------------------- */
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
 
-    const universe =
-        document.querySelector(".skill-universe");
+    const observer = new IntersectionObserver(
+        entries => {
 
-    if (universe && window.innerWidth > 760) {
+            entries.forEach(entry => {
 
-        universe.addEventListener("mousemove", e => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
 
-            const rect =
-                universe.getBoundingClientRect();
+            });
 
-            const x =
-                (e.clientX - rect.left) /
-                rect.width -
-                .5;
+        },
+        {
+            threshold: .12
+        }
+    );
 
-            const y =
-                (e.clientY - rect.top) /
-                rect.height -
-                .5;
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-            universe.style.transform =
-                `rotateX(${y * -5}deg)
-                 rotateY(${x * 5}deg)`;
+
+    /* =========================
+       NAV ACTIVE STATE
+    ========================= */
+
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".navbar nav a");
+
+    const sectionObserver = new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    navLinks.forEach(link => {
+                        link.classList.remove("active");
+
+                        if (
+                            link.getAttribute("href") ===
+                            `#${entry.target.id}`
+                        ) {
+                            link.classList.add("active");
+                        }
+                    });
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .35
+        }
+    );
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+
+    /* =========================
+       SCROLL TOP
+    ========================= */
+
+    const topBtn = document.getElementById("topBtn");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 700) {
+            topBtn.classList.add("show");
+        } else {
+            topBtn.classList.remove("show");
+        }
+
+    });
+
+    topBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
-
-        universe.addEventListener("mouseleave", () => {
-            universe.style.transform = "";
-        });
-    }
+    });
 
 
-    /* -----------------------------------------------------
-       CONTACT FORM — FORMSUBMIT AJAX
-    ----------------------------------------------------- */
+    /* =========================
+       SMOOTH NAV
+    ========================= */
 
-    const form =
-        document.getElementById("contactForm");
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-    const status =
-        document.getElementById("formStatus");
+        link.addEventListener("click", e => {
 
-    if (form) {
+            const targetId = link.getAttribute("href");
 
-        form.addEventListener("submit", async e => {
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+
+            if (!target) return;
 
             e.preventDefault();
 
-            const button =
-                form.querySelector("button");
-
-            const originalText =
-                button.querySelector("span").textContent;
-
-            button.disabled = true;
-
-            button.querySelector("span").textContent =
-                "SENDING...";
-
-            status.textContent = "";
-
-            const formData =
-                new FormData(form);
-
-            const payload = {};
-
-            formData.forEach((value, key) => {
-                payload[key] = value;
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
+
+        });
+
+    });
+
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuBtn = document.querySelector(".menu-btn");
+    const nav = document.querySelector(".navbar nav");
+
+    if (menuBtn && nav) {
+
+        menuBtn.addEventListener("click", () => {
+
+            nav.classList.toggle("mobile-open");
+
+        });
+
+        nav.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", () => {
+                nav.classList.remove("mobile-open");
+            });
+
+        });
+
+    }
+
+
+    /* =========================
+       CONTACT FORM
+       FormSubmit AJAX
+    ========================= */
+
+    const contactForm = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+
+    if (contactForm) {
+
+        contactForm.addEventListener("submit", async e => {
+
+            e.preventDefault();
+
+            const submitButton = contactForm.querySelector("button[type='submit']");
+            const buttonText = submitButton.querySelector("span");
+
+            buttonText.textContent = "Sending...";
+            submitButton.disabled = true;
+
+            formStatus.textContent = "";
+
+            const formData = new FormData(contactForm);
+
+            const data = Object.fromEntries(formData.entries());
 
             try {
 
-                const response =
-                    await fetch(
-                        "https://formsubmit.co/ajax/singhkritika8449@gmail.com",
-                        {
-                            method: "POST",
-                            headers: {
-                                "Accept":
-                                    "application/json",
-                                "Content-Type":
-                                    "application/json"
-                            },
-                            body:
-                                JSON.stringify(payload)
-                        }
-                    );
+                const response = await fetch(
+                    "https://formsubmit.co/ajax/singhkritika8449@gmail.com",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Accept": "application/json",
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    }
+                );
 
-                const result =
-                    await response.json();
+                const result = await response.json();
 
-                if (response.ok && result.success) {
+                if (response.ok) {
 
-                    button.querySelector("span").textContent =
-                        "MESSAGE SENT ✓";
-
-                    status.textContent =
+                    buttonText.textContent = "Message Sent ✓";
+                    formStatus.textContent =
                         "Thanks! Your message has been sent successfully.";
 
-                    form.reset();
+                    formStatus.style.color = "#70e0b0";
+
+                    contactForm.reset();
 
                     setTimeout(() => {
-
-                        button.disabled = false;
-
-                        button.querySelector("span").textContent =
-                            originalText;
-
-                    }, 3500);
+                        buttonText.textContent = "Send Message";
+                        submitButton.disabled = false;
+                    }, 2500);
 
                 } else {
 
-                    throw new Error("Form submission failed");
+                    throw new Error(result.message || "Failed");
 
                 }
 
             } catch (error) {
 
-                button.disabled = false;
+                buttonText.textContent = "Try Again";
+                submitButton.disabled = false;
 
-                button.querySelector("span").textContent =
-                    "TRY AGAIN";
-
-                status.textContent =
+                formStatus.textContent =
                     "Couldn't send — please try again.";
 
-                setTimeout(() => {
-                    button.querySelector("span").textContent =
-                        originalText;
-                }, 2500);
+                formStatus.style.color = "#ff7b9c";
             }
 
         });
+
     }
 
 
-    /* -----------------------------------------------------
-       ACTIVE NAV LINK
-    ----------------------------------------------------- */
+    /* =========================
+       SCROLL PROGRESS
+    ========================= */
 
-    const sections =
-        document.querySelectorAll("section[id]");
+    const progress = document.createElement("div");
 
-    const navAnchors =
-        document.querySelectorAll(".nav-links a");
+    progress.style.position = "fixed";
+    progress.style.top = "0";
+    progress.style.left = "0";
+    progress.style.height = "2px";
+    progress.style.width = "0";
+    progress.style.background =
+        "linear-gradient(90deg,#7137ff,#d946ef,#63e6ff)";
+    progress.style.zIndex = "9999";
+    progress.style.boxShadow = "0 0 15px #a855f7";
+    progress.style.pointerEvents = "none";
 
-    const navObserver =
-        new IntersectionObserver(
-            entries => {
+    document.body.appendChild(progress);
 
-                entries.forEach(entry => {
+    window.addEventListener("scroll", () => {
 
-                    if (entry.isIntersecting) {
+        const scrollTop = window.scrollY;
 
-                        navAnchors.forEach(link => {
-                            link.style.color = "";
-                        });
+        const pageHeight =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
 
-                        const active =
-                            document.querySelector(
-                                `.nav-links a[href="#${entry.target.id}"]`
-                            );
+        const percentage =
+            pageHeight > 0
+                ? (scrollTop / pageHeight) * 100
+                : 0;
 
-                        if (active) {
-                            active.style.color = "white";
-                        }
-                    }
-                });
-
-            },
-            {
-                threshold: .35
-            }
-        );
-
-    sections.forEach(section => {
-        navObserver.observe(section);
+        progress.style.width = `${percentage}%`;
     });
 
 
-    /* -----------------------------------------------------
-       CERTIFICATE HOVER MAGNETIC EFFECT
-    ----------------------------------------------------- */
+    /* =========================
+       RANDOM PROJECT BAR MOTION
+    ========================= */
 
-    document.querySelectorAll(".cert").forEach(cert => {
+    const bars = document.querySelectorAll(".sorting-bars i");
 
-        cert.addEventListener("mousemove", e => {
+    bars.forEach((bar, index) => {
 
-            const rect =
-                cert.getBoundingClientRect();
+        bar.style.animationDelay = `${index * .12}s`;
 
-            const x =
-                (e.clientX - rect.left) /
-                rect.width;
+    });
 
-            const y =
-                (e.clientY - rect.top) /
-                rect.height;
 
-            cert.style.transform =
-                `perspective(600px)
-                 rotateY(${(x - .5) * 2}deg)
-                 rotateX(${(y - .5) * -2}deg)`;
+    /* =========================
+       TEXT GLITCH
+    ========================= */
+
+    const heroName = document.querySelector(".hero-title strong");
+
+    if (heroName) {
+
+        heroName.addEventListener("mouseenter", () => {
+
+            heroName.style.textShadow =
+                "3px 0 #d946ef,-3px 0 #63e6ff";
+
+            setTimeout(() => {
+                heroName.style.textShadow = "";
+            }, 180);
+
         });
 
-        cert.addEventListener("mouseleave", () => {
-            cert.style.transform = "";
-        });
-    });
-
-
-    /* -----------------------------------------------------
-       RANDOM FLOATING CHIP DEPTH
-    ----------------------------------------------------- */
-
-    document.querySelectorAll(".floating-chip").forEach((chip, i) => {
-
-        chip.style.animationDuration =
-            `${3.5 + i * .7}s`;
-    });
-
-
-    /* -----------------------------------------------------
-       BACK TO TOP
-    ----------------------------------------------------- */
-
-    document.querySelector(".back-top")
-        ?.addEventListener("click", e => {
-
-            e.preventDefault();
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-
-
-    /* -----------------------------------------------------
-       DYNAMIC HERO PARALLAX VARIABLES
-    ----------------------------------------------------- */
-
-    document.addEventListener("mousemove", e => {
-
-        const px =
-            (e.clientX / window.innerWidth - .5) * 2;
-
-        const py =
-            (e.clientY / window.innerHeight - .5) * 2;
-
-        document.documentElement.style
-            .setProperty("--mouse-x", px);
-
-        document.documentElement.style
-            .setProperty("--mouse-y", py);
-    });
-
-
-    /* -----------------------------------------------------
-       CONSOLE SIGNATURE
-    ----------------------------------------------------- */
-
-    console.log(
-        "%cKritika Singh",
-        "font-size:24px;font-weight:900;color:#9c63ff;"
-    );
-
-    console.log(
-        "%cJava • Spring Boot • Backend Engineering",
-        "font-size:12px;color:#aaa;"
-    );
+    }
 
 });
