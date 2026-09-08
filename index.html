@@ -16,37 +16,30 @@
 
 <body>
 
-<div id="loader">
-    <div class="loader-core">
-        <span>KS</span><i></i>
-        <div class="loader-line">
-            <div></div>
-        </div>
-        <small>LOADING PORTFOLIO</small>
-    </div>
-</div>
-
-<div class="cursor"></div>
-<div class="cursor-ring"></div>
-
 <div class="noise"></div>
 <canvas id="stars"></canvas>
 
 <div class="aurora aurora-one"></div>
 <div class="aurora aurora-two"></div>
 
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
 <div class="page">
 
+    <!-- NAVBAR -->
     <header class="navbar">
+
         <a href="#home" class="brand">
             <div class="brand-logo">KS<span>.</span></div>
+
             <div class="brand-info">
                 <strong>Kritika Singh</strong>
                 <small>Software Engineer</small>
             </div>
         </a>
 
-        <nav>
+        <nav id="mainNav">
             <a class="active" href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -60,11 +53,13 @@
             Let's Connect <span>↗</span>
         </a>
 
-        <button class="menu-btn" aria-label="Menu">
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
             <span></span>
             <span></span>
         </button>
+
     </header>
+
 
     <main>
 
@@ -102,6 +97,7 @@
                 </p>
 
                 <div class="hero-actions reveal">
+
                     <a href="#projects" class="primary-btn magnetic">
                         View My Work
                         <span>→</span>
@@ -111,30 +107,37 @@
                         Get In Touch
                         <span>↗</span>
                     </a>
+
                 </div>
 
                 <div class="hero-stats reveal">
+
                     <div>
                         <strong>02<span>+</span></strong>
                         <small>Featured Projects</small>
                     </div>
+
                     <div>
                         <strong>07<span>+</span></strong>
                         <small>Certifications</small>
                     </div>
+
                     <div>
                         <strong>2026</strong>
                         <small>B.Tech CSE · IoT</small>
                     </div>
+
                     <div>
                         <strong>∞</strong>
                         <small>Learning Mode</small>
                     </div>
+
                 </div>
 
             </div>
 
-            <!-- 3D HERO VISUAL -->
+
+            <!-- 3D HERO -->
             <div class="hero-visual">
 
                 <div class="planet-glow"></div>
@@ -147,6 +150,7 @@
                 <div class="orbit-dot dot-two"></div>
                 <div class="orbit-dot dot-three"></div>
 
+
                 <div class="profile-card" data-tilt>
 
                     <div class="profile-top">
@@ -155,19 +159,23 @@
                     </div>
 
                     <div class="profile-photo">
-                        <img src="AIPhoto.jpeg" alt="Kritika Singh">
+                        <img src="AIPhoto.jpeg" alt="Kritika Singh" loading="eager">
                         <div class="photo-shine"></div>
                     </div>
 
                     <div class="profile-bottom">
+
                         <div>
                             <small>FOCUS</small>
                             <strong>BACKEND<br>ENGINEERING</strong>
                         </div>
 
                         <div class="profile-number">01</div>
+
                     </div>
+
                 </div>
+
 
                 <div class="floating-card java-card float">
                     <div class="tech-icon">☕</div>
@@ -194,7 +202,9 @@
                     <span>PostgreSQL</span>
                 </div>
 
+
                 <div class="code-card" data-tilt>
+
                     <div class="code-head">
                         <span></span>
                         <span></span>
@@ -209,21 +219,29 @@
                         <p><i>04</i>&nbsp;&nbsp; API api = <mark>build()</mark>;</p>
                         <p><i>05</i> }</p>
                     </div>
+
                 </div>
 
+
                 <div class="circular-text">
+
                     <svg viewBox="0 0 200 200">
+
                         <defs>
                             <path id="circlePath"
                                   d="M 100,100 m -73,0 a 73,73 0 1,1 146,0 a 73,73 0 1,1 -146,0"/>
                         </defs>
+
                         <text>
                             <textPath href="#circlePath">
                                 JAVA · SPRING BOOT · BACKEND · BUILD ·
                             </textPath>
                         </text>
+
                     </svg>
+
                     <span>↗</span>
+
                 </div>
 
                 <div class="hand-note">
@@ -234,6 +252,7 @@
 
             </div>
 
+
             <div class="scroll-indicator">
                 <span>SCROLL TO EXPLORE</span>
                 <div></div>
@@ -241,50 +260,38 @@
             </div>
 
             <div class="hero-watermark">ENGINEER</div>
+
         </section>
 
 
-        <!-- TECH MARQUEE -->
+        <!-- MARQUEE -->
         <div class="tech-marquee">
-            <div class="marquee-track">
-                <span>JAVA</span>
-                <i>✦</i>
-                <span>SPRING BOOT</span>
-                <i>✦</i>
-                <span>SPRING SECURITY</span>
-                <i>✦</i>
-                <span>POSTGRESQL</span>
-                <i>✦</i>
-                <span>MYSQL</span>
-                <i>✦</i>
-                <span>DOCKER</span>
-                <i>✦</i>
-                <span>GIT</span>
-                <i>✦</i>
-                <span>GITHUB</span>
-                <i>✦</i>
-                <span>HTML</span>
-                <i>✦</i>
-                <span>CSS</span>
-                <i>✦</i>
-                <span>JAVASCRIPT</span>
-                <i>✦</i>
 
-                <span>JAVA</span>
-                <i>✦</i>
-                <span>SPRING BOOT</span>
-                <i>✦</i>
-                <span>SPRING SECURITY</span>
-                <i>✦</i>
-                <span>POSTGRESQL</span>
-                <i>✦</i>
-                <span>MYSQL</span>
-                <i>✦</i>
-                <span>DOCKER</span>
-                <i>✦</i>
-                <span>GIT</span>
-                <i>✦</i>
+            <div class="marquee-track">
+
+                <span>JAVA</span><i>✦</i>
+                <span>SPRING BOOT</span><i>✦</i>
+                <span>SPRING SECURITY</span><i>✦</i>
+                <span>POSTGRESQL</span><i>✦</i>
+                <span>MYSQL</span><i>✦</i>
+                <span>DOCKER</span><i>✦</i>
+                <span>GIT</span><i>✦</i>
+                <span>GITHUB</span><i>✦</i>
+                <span>HTML</span><i>✦</i>
+                <span>CSS</span><i>✦</i>
+                <span>JAVASCRIPT</span><i>✦</i>
+
+                <span>JAVA</span><i>✦</i>
+                <span>SPRING BOOT</span><i>✦</i>
+                <span>SPRING SECURITY</span><i>✦</i>
+                <span>POSTGRESQL</span><i>✦</i>
+                <span>MYSQL</span><i>✦</i>
+                <span>DOCKER</span><i>✦</i>
+                <span>GIT</span><i>✦</i>
+                <span>GITHUB</span><i>✦</i>
+
             </div>
+
         </div>
 
 
@@ -298,9 +305,11 @@
                 <h2>Building with<br><em>purpose.</em></h2>
             </div>
 
+
             <div class="about-grid">
 
                 <div class="about-intro reveal">
+
                     <div class="mini-orb">
                         <span>KS</span>
                     </div>
@@ -318,10 +327,14 @@
                     <a href="#contact" class="outline-btn magnetic">
                         More About Me <span>→</span>
                     </a>
+
                 </div>
 
+
                 <div class="about-big reveal">
+
                     <span class="quote-mark">“</span>
+
                     <p>
                         Turning complex ideas into
                         <strong>simple, efficient</strong>
@@ -330,10 +343,16 @@
 
                     <div class="about-line"></div>
 
-                    <small>PASSIONATE ABOUT<br>PROBLEM SOLVING</small>
+                    <small>
+                        PASSIONATE ABOUT<br>
+                        PROBLEM SOLVING
+                    </small>
+
                 </div>
 
+
                 <div class="about-side reveal">
+
                     <div class="side-label">CURRENT FOCUS</div>
 
                     <div class="focus-item">
@@ -355,9 +374,11 @@
                         <span>04</span>
                         <strong>SQL & Databases</strong>
                     </div>
+
                 </div>
 
             </div>
+
         </section>
 
 
@@ -371,16 +392,21 @@
                 <h2>Tools I<br><em>work with.</em></h2>
             </div>
 
+
             <div class="skills-stage">
 
                 <div class="skills-core">
+
                     <div class="core-ring"></div>
                     <div class="core-ring second"></div>
+
                     <div class="core-text">
                         <strong>JAVA</strong>
                         <small>CORE</small>
                     </div>
+
                 </div>
+
 
                 <div class="skill-node node-java">JAVA</div>
                 <div class="skill-node node-spring">SPRING BOOT</div>
@@ -391,6 +417,7 @@
                 <div class="skill-node node-docker">DOCKER</div>
                 <div class="skill-node node-git">GIT</div>
                 <div class="skill-node node-js">JAVASCRIPT</div>
+
 
                 <svg class="skill-lines" viewBox="0 0 1000 650">
                     <path d="M500 325 L170 130"/>
@@ -405,6 +432,7 @@
                 </svg>
 
             </div>
+
         </section>
 
 
@@ -418,41 +446,59 @@
                 <h2>Things I've<br><em>built.</em></h2>
             </div>
 
+
             <div class="projects-grid">
+
 
                 <article class="project-card large reveal" data-tilt>
 
                     <div class="project-visual url-visual">
+
                         <div class="window">
+
                             <div class="window-bar">
-                                <span></span><span></span><span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
                                 <small>URL SHORTENER</small>
                             </div>
 
                             <div class="url-screen">
+
                                 <div class="url-icon">↗</div>
+
                                 <h3>Shorten your URL</h3>
+
                                 <div class="url-input">
                                     https://example.com/very-long-url
                                     <button>SHORTEN</button>
                                 </div>
+
                                 <div class="url-result">
                                     <span>✓</span>
                                     kritika.to/x8K2p
                                 </div>
+
                             </div>
+
                         </div>
 
                         <div class="project-glow"></div>
+
                     </div>
 
+
                     <div class="project-info">
+
                         <div class="project-meta">
                             <span>01</span>
                             <small>BACKEND / WEB APPLICATION</small>
                         </div>
 
-                        <h3>URL Shortener<br><em>Application</em></h3>
+                        <h3>
+                            URL Shortener<br>
+                            <em>Application</em>
+                        </h3>
 
                         <p>
                             Database-driven URL shortener built using Spring Boot
@@ -469,10 +515,13 @@
 
                         <a href="https://github.com/KritikaaSinghh/kritika-url-shortener"
                            target="_blank"
+                           rel="noopener noreferrer"
                            class="project-link magnetic">
                             View Project <span>↗</span>
                         </a>
+
                     </div>
+
                 </article>
 
 
@@ -498,15 +547,21 @@
                         <div class="sorting-label">
                             SORTING VISUALIZER
                         </div>
+
                     </div>
 
+
                     <div class="project-info">
+
                         <div class="project-meta">
                             <span>02</span>
                             <small>INTERACTIVE WEB APP</small>
                         </div>
 
-                        <h3>Sorting<br><em>Visualizer</em></h3>
+                        <h3>
+                            Sorting<br>
+                            <em>Visualizer</em>
+                        </h3>
 
                         <p>
                             Interactive visualizer for sorting algorithms with
@@ -521,22 +576,29 @@
                         </div>
 
                         <div class="project-actions">
+
                             <a href="https://kritikaasinghh.github.io/Sorting-Visualizer/"
                                target="_blank"
+                               rel="noopener noreferrer"
                                class="project-link magnetic">
                                 Live Demo <span>↗</span>
                             </a>
 
                             <a href="https://github.com/KritikaaSinghh/Sorting-Visualizer"
                                target="_blank"
+                               rel="noopener noreferrer"
                                class="github-project">
                                 GitHub ↗
                             </a>
+
                         </div>
+
                     </div>
+
                 </article>
 
             </div>
+
         </section>
 
 
@@ -550,6 +612,7 @@
                 <h2>Learning.<br><em>Building.</em></h2>
             </div>
 
+
             <div class="timeline">
 
                 <div class="timeline-line">
@@ -557,22 +620,32 @@
                 </div>
 
                 <div class="timeline-item active reveal">
+
                     <div class="timeline-dot"></div>
 
                     <div class="timeline-year">2026</div>
 
                     <div class="timeline-content">
+
                         <small>EDUCATION</small>
+
                         <h3>Bachelor of Technology</h3>
-                        <h4>Computer Science & Engineering (Internet of Things)</h4>
+
+                        <h4>
+                            Computer Science & Engineering (Internet of Things)
+                        </h4>
+
                         <p>
                             Meerut Institute of Engineering and Technology (MIET),
                             Meerut, Uttar Pradesh
                         </p>
+
                     </div>
+
                 </div>
 
             </div>
+
         </section>
 
 
@@ -585,6 +658,7 @@
                 <span>CERTIFICATIONS</span>
                 <h2>Always<br><em>learning.</em></h2>
             </div>
+
 
             <div class="cert-grid">
 
@@ -638,6 +712,7 @@
                 </div>
 
             </div>
+
         </section>
 
 
@@ -646,7 +721,9 @@
 
             <div class="contact-orb"></div>
 
+
             <div class="contact-copy">
+
                 <span>06 · GET IN TOUCH</span>
 
                 <h2>
@@ -659,54 +736,106 @@
                     Drop me a message.
                 </p>
 
+
                 <div class="contact-details">
+
                     <a href="mailto:singhkritika8449@gmail.com">
                         <small>EMAIL</small>
                         <strong>singhkritika8449@gmail.com</strong>
                     </a>
+
 
                     <div>
                         <small>LOCATION</small>
                         <strong>New Delhi, India</strong>
                     </div>
 
-                    <a href="https://github.com/KritikaaSinghh" target="_blank">
+
+                    <!-- MOBILE-SAFE GITHUB LINK -->
+                    <a
+                            class="external-contact-link"
+                            href="https://github.com/KritikaaSinghh"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Open Kritika Singh GitHub profile"
+                    >
                         <small>GITHUB</small>
                         <strong>github.com/KritikaaSinghh ↗</strong>
                     </a>
 
-                    <a href="https://www.linkedin.com/in/kritikaasinghh" target="_blank">
+
+                    <!-- MOBILE-SAFE LINKEDIN LINK -->
+                    <a
+                            class="external-contact-link"
+                            href="https://www.linkedin.com/in/kritikaasinghh"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Open Kritika Singh LinkedIn profile"
+                    >
                         <small>LINKEDIN</small>
                         <strong>linkedin.com/in/kritikaasinghh ↗</strong>
                     </a>
+
                 </div>
+
             </div>
+
 
             <form id="contactForm" class="contact-form">
 
-                <input type="hidden" name="_subject" value="New Portfolio Contact — Kritika Singh">
+                <input type="hidden" name="_subject"
+                       value="New Portfolio Contact — Kritika Singh">
+
                 <input type="hidden" name="_template" value="table">
+
                 <input type="hidden" name="_captcha" value="false">
 
-                <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="honey">
+                <input
+                        type="text"
+                        name="_honey"
+                        tabindex="-1"
+                        autocomplete="off"
+                        class="honey"
+                >
+
 
                 <label>
                     <span>01</span>
                     YOUR NAME
-                    <input type="text" name="name" placeholder="Your name" required>
+
+                    <input
+                            type="text"
+                            name="name"
+                            placeholder="Your name"
+                            required
+                    >
                 </label>
+
 
                 <label>
                     <span>02</span>
                     EMAIL ADDRESS
-                    <input type="email" name="email" placeholder="you@example.com" required>
+
+                    <input
+                            type="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            required
+                    >
                 </label>
+
 
                 <label>
                     <span>03</span>
                     MESSAGE
-                    <textarea name="message" placeholder="Tell me about your idea..." required></textarea>
+
+                    <textarea
+                            name="message"
+                            placeholder="Tell me about your idea..."
+                            required
+                    ></textarea>
                 </label>
+
 
                 <button type="submit" class="send-btn magnetic">
                     <span>Send Message</span>
@@ -716,31 +845,59 @@
                 <p id="formStatus"></p>
 
             </form>
+
         </section>
 
     </main>
 
 
+    <!-- FOOTER -->
     <footer>
-        <div class="footer-logo">KS<span>.</span></div>
+
+        <div class="footer-logo">
+            KS<span>.</span>
+        </div>
 
         <p>
             Designed & built with curiosity by Kritika Singh.
         </p>
 
         <div class="footer-links">
-            <a href="https://github.com/KritikaaSinghh" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/kritikaasinghh" target="_blank">LinkedIn</a>
-            <a href="mailto:singhkritika8449@gmail.com">Email</a>
+
+            <a
+                    href="https://github.com/KritikaaSinghh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+            >
+                GitHub
+            </a>
+
+            <a
+                    href="https://www.linkedin.com/in/kritikaasinghh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+            >
+                LinkedIn
+            </a>
+
+            <a href="mailto:singhkritika8449@gmail.com">
+                Email
+            </a>
+
         </div>
 
-        <span class="copyright">© 2026 Kritika Singh</span>
+        <span class="copyright">
+            © 2026 Kritika Singh
+        </span>
+
     </footer>
 
 </div>
 
-<button id="topBtn">↑</button>
+
+<button id="topBtn" aria-label="Back to top">↑</button>
 
 <script src="script.js"></script>
+
 </body>
 </html>

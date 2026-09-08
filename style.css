@@ -1,6 +1,5 @@
 :root {
     --bg: #03030b;
-    --bg2: #070612;
     --text: #f8f7ff;
     --muted: #9894a9;
     --purple: #9d4edd;
@@ -8,7 +7,6 @@
     --pink: #d946ef;
     --cyan: #63e6ff;
     --border: rgba(255,255,255,.11);
-    --glass: rgba(11,9,24,.66);
 }
 
 * {
@@ -28,13 +26,10 @@ body {
     overflow-x: hidden;
 }
 
-body.loading {
-    overflow: hidden;
-}
-
 a {
     color: inherit;
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 button,
@@ -50,75 +45,6 @@ button {
 ::selection {
     background: #a855f7;
     color: white;
-}
-
-
-/* LOADER */
-
-#loader {
-    position: fixed;
-    inset: 0;
-    background: #020207;
-    z-index: 99999;
-    display: grid;
-    place-items: center;
-    transition: .8s ease;
-}
-
-#loader.hide {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.loader-core {
-    width: 320px;
-    text-align: center;
-}
-
-.loader-core > span {
-    font-family: "Space Grotesk";
-    font-size: 75px;
-    font-weight: 700;
-    letter-spacing: -7px;
-}
-
-.loader-core > span::first-letter {
-    color: white;
-}
-
-.loader-core i {
-    display: inline-block;
-    width: 13px;
-    height: 13px;
-    background: #a855f7;
-    border-radius: 50%;
-    margin-left: 8px;
-    box-shadow: 0 0 30px #a855f7;
-}
-
-.loader-line {
-    width: 100%;
-    height: 1px;
-    background: rgba(255,255,255,.15);
-    margin: 35px 0 12px;
-}
-
-.loader-line div {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(90deg,#7c3aed,#d946ef);
-    animation: load 1.4s ease forwards;
-}
-
-.loader-core small {
-    color: #716c80;
-    letter-spacing: 4px;
-    font-size: 9px;
-}
-
-@keyframes load {
-    to { width: 100%; }
 }
 
 
@@ -138,7 +64,7 @@ button {
     inset: 0;
     z-index: 20;
     pointer-events: none;
-    opacity: .045;
+    opacity: .04;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
 }
 
@@ -182,22 +108,24 @@ button {
     top: 14px;
     left: 5%;
     width: 90%;
-    height: 62px;
+    min-height: 62px;
     padding: 7px 10px 7px 15px;
     border: 1px solid rgba(255,255,255,.13);
     border-radius: 40px;
-    background: rgba(4,3,11,.7);
+    background: rgba(4,3,11,.76);
     backdrop-filter: blur(20px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 10px 50px rgba(0,0,0,.25);
+    box-shadow: 0 10px 50px rgba(0,0,0,.3);
 }
 
 .brand {
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
+    z-index: 2;
 }
 
 .brand-logo {
@@ -242,7 +170,6 @@ button {
 .navbar nav a.active {
     color: white;
     background: rgba(168,85,247,.18);
-    box-shadow: inset 0 0 15px rgba(168,85,247,.1);
 }
 
 .connect-btn {
@@ -250,12 +177,11 @@ button {
     border: 1px solid #8b45f5;
     border-radius: 25px;
     font-size: 10px;
-    box-shadow: 0 0 20px rgba(139,69,245,.15);
     transition: .3s;
 }
 
 .connect-btn:hover {
-    background: #fff;
+    background: white;
     color: #05040a;
     box-shadow: 0 0 35px rgba(168,85,247,.6);
 }
@@ -268,6 +194,8 @@ button {
     display: none;
     background: none;
     border: 0;
+    position: relative;
+    z-index: 100;
 }
 
 .menu-btn span {
@@ -300,16 +228,6 @@ button {
     mask-image: linear-gradient(to bottom,black,transparent);
 }
 
-.hero-grid::after {
-    content: "";
-    position: absolute;
-    width: 800px;
-    height: 500px;
-    left: 25%;
-    top: 15%;
-    background: radial-gradient(circle,rgba(100,40,200,.2),transparent 65%);
-}
-
 .hero-copy {
     width: 53%;
     position: relative;
@@ -324,8 +242,6 @@ button {
     border-radius: 30px;
     color: #c6a6ff;
     font-size: 9px;
-    letter-spacing: .5px;
-    box-shadow: 0 0 25px rgba(139,69,245,.1);
 }
 
 .pulse-dot {
@@ -340,7 +256,10 @@ button {
 }
 
 @keyframes pulse {
-    50% { transform: scale(2); opacity: .4; }
+    50% {
+        transform: scale(2);
+        opacity: .4;
+    }
 }
 
 .location {
@@ -349,8 +268,7 @@ button {
     gap: 13px;
     margin-top: 45px;
     color: #888294;
-    font-family: monospace;
-    font-size: 9px;
+    font: 9px monospace;
     letter-spacing: 2px;
 }
 
@@ -387,7 +305,6 @@ button {
     font-size: 15px;
     margin-top: 30px;
     color: #e7e3ed;
-    font-weight: 500;
 }
 
 .hero-role b {
@@ -425,7 +342,6 @@ button {
     border-radius: 6px;
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: .5px;
     transition: .35s;
 }
 
@@ -507,16 +423,20 @@ button {
     left: 50%;
     top: 47%;
     transform: translate(-50%,-50%);
-    background: radial-gradient(circle,
+    background: radial-gradient(
+        circle,
         rgba(168,85,247,.25),
         rgba(93,34,190,.08) 45%,
-        transparent 68%);
+        transparent 68%
+    );
     filter: blur(20px);
     animation: breathe 4s ease-in-out infinite;
 }
 
 @keyframes breathe {
-    50% { transform: translate(-50%,-50%) scale(1.12); }
+    50% {
+        transform: translate(-50%,-50%) scale(1.12);
+    }
 }
 
 .orbit {
@@ -549,7 +469,9 @@ button {
 }
 
 @keyframes orbitSpin {
-    to { transform: translate(-50%,-50%) rotateX(67deg) rotateZ(360deg); }
+    to {
+        transform: translate(-50%,-50%) rotateX(67deg) rotateZ(360deg);
+    }
 }
 
 .orbit-dot {
@@ -584,7 +506,11 @@ button {
     top: 44%;
     transform: translate(-50%,-50%) rotate(2deg);
     padding: 12px;
-    background: linear-gradient(145deg,rgba(25,19,43,.85),rgba(6,6,14,.85));
+    background: linear-gradient(
+        145deg,
+        rgba(25,19,43,.85),
+        rgba(6,6,14,.85)
+    );
     border: 1px solid rgba(199,133,255,.4);
     box-shadow:
         0 0 40px rgba(142,60,255,.3),
@@ -674,8 +600,13 @@ button {
 }
 
 @keyframes shine {
-    0%,55% { transform: translateX(-120%); }
-    75%,100% { transform: translateX(120%); }
+    0%,55% {
+        transform: translateX(-120%);
+    }
+
+    75%,100% {
+        transform: translateX(120%);
+    }
 }
 
 .floating-card {
@@ -742,7 +673,9 @@ button {
 }
 
 @keyframes float {
-    50% { transform: translateY(-15px) rotate(2deg); }
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
 }
 
 .code-card {
@@ -830,7 +763,9 @@ button {
 }
 
 @keyframes circular {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .hand-note {
@@ -869,7 +804,9 @@ button {
 }
 
 @keyframes bounce {
-    50% { transform: translateY(5px); }
+    50% {
+        transform: translateY(5px);
+    }
 }
 
 .hero-watermark {
@@ -915,7 +852,9 @@ button {
 }
 
 @keyframes marquee {
-    to { transform: translateX(-50%); }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 
@@ -1114,8 +1053,11 @@ button {
     margin-top: 40px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,.06);
-    background:
-        radial-gradient(circle at center,rgba(124,58,237,.1),transparent 35%);
+    background: radial-gradient(
+        circle at center,
+        rgba(124,58,237,.1),
+        transparent 35%
+    );
 }
 
 .skills-core {
@@ -1180,7 +1122,9 @@ button {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .skill-node {
@@ -1208,18 +1152,63 @@ button {
     box-shadow: 0 0 10px #a855f7;
 }
 
-.node-java { left: 12%; top: 18%; }
-.node-spring { left: 40%; top: 8%; animation-delay: .3s; }
-.node-security { right: 12%; top: 19%; animation-delay: .8s; }
-.node-jpa { right: 4%; top: 47%; animation-delay: 1s; }
-.node-postgres { right: 15%; bottom: 15%; animation-delay: 1.3s; }
-.node-sql { left: 45%; bottom: 8%; animation-delay: 1.7s; }
-.node-docker { left: 15%; bottom: 18%; animation-delay: 2s; }
-.node-git { left: 4%; top: 48%; animation-delay: 2.2s; }
-.node-js { right: 37%; top: 28%; animation-delay: 2.5s; }
+.node-java {
+    left: 12%;
+    top: 18%;
+}
+
+.node-spring {
+    left: 40%;
+    top: 8%;
+    animation-delay: .3s;
+}
+
+.node-security {
+    right: 12%;
+    top: 19%;
+    animation-delay: .8s;
+}
+
+.node-jpa {
+    right: 4%;
+    top: 47%;
+    animation-delay: 1s;
+}
+
+.node-postgres {
+    right: 15%;
+    bottom: 15%;
+    animation-delay: 1.3s;
+}
+
+.node-sql {
+    left: 45%;
+    bottom: 8%;
+    animation-delay: 1.7s;
+}
+
+.node-docker {
+    left: 15%;
+    bottom: 18%;
+    animation-delay: 2s;
+}
+
+.node-git {
+    left: 4%;
+    top: 48%;
+    animation-delay: 2.2s;
+}
+
+.node-js {
+    right: 37%;
+    top: 28%;
+    animation-delay: 2.5s;
+}
 
 @keyframes nodeFloat {
-    50% { transform: translateY(-9px); }
+    50% {
+        transform: translateY(-9px);
+    }
 }
 
 .skill-lines {
@@ -1239,7 +1228,9 @@ button {
 }
 
 @keyframes dash {
-    to { stroke-dashoffset: -150; }
+    to {
+        stroke-dashoffset: -150;
+    }
 }
 
 
@@ -1268,7 +1259,11 @@ button {
     height: 340px;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(circle at center,rgba(109,40,217,.18),transparent 65%);
+    background: radial-gradient(
+        circle at center,
+        rgba(109,40,217,.18),
+        transparent 65%
+    );
 }
 
 .window {
@@ -1396,7 +1391,9 @@ button {
 }
 
 @keyframes sortBars {
-    to { transform: scaleY(.65); }
+    to {
+        transform: scaleY(.65);
+    }
 }
 
 .sorting-label {
@@ -1444,7 +1441,6 @@ button {
     color: #8e8998;
     font-size: 11px;
     line-height: 1.7;
-    max-width: 550px;
 }
 
 .tags {
@@ -1487,7 +1483,7 @@ button {
 }
 
 
-/* JOURNEY */
+/* EDUCATION */
 
 .timeline {
     margin-top: 90px;
@@ -1593,19 +1589,6 @@ button {
     overflow: hidden;
 }
 
-.cert-card::after {
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    right: -50px;
-    top: -50px;
-    border-radius: 50%;
-    background: #8b3ff0;
-    filter: blur(50px);
-    opacity: .15;
-}
-
 .cert-card:hover {
     transform: translateY(-5px);
     border-color: rgba(168,85,247,.5);
@@ -1664,15 +1647,13 @@ button {
     left: -350px;
     top: 50%;
     transform: translateY(-50%);
+    pointer-events: none;
 }
 
-.contact-orb::before,
-.contact-orb::after {
-    content: "";
-    position: absolute;
-    inset: 70px;
-    border: 1px solid rgba(168,85,247,.08);
-    border-radius: 50%;
+.contact-copy,
+.contact-form {
+    position: relative;
+    z-index: 5;
 }
 
 .contact-copy > span {
@@ -1706,6 +1687,8 @@ button {
     margin-top: 45px;
     display: grid;
     gap: 20px;
+    position: relative;
+    z-index: 10;
 }
 
 .contact-details a,
@@ -1713,6 +1696,14 @@ button {
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+.contact-details a {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
+    cursor: pointer;
+    touch-action: manipulation;
 }
 
 .contact-details small {
@@ -1727,7 +1718,8 @@ button {
     color: #c4becd;
 }
 
-.contact-details a:hover strong {
+.contact-details a:hover strong,
+.contact-details a:active strong {
     color: #b77cff;
 }
 
@@ -1736,7 +1728,6 @@ button {
     border: 1px solid rgba(255,255,255,.1);
     background: rgba(255,255,255,.018);
     backdrop-filter: blur(15px);
-    box-shadow: 0 30px 100px rgba(0,0,0,.3);
 }
 
 .contact-form label {
@@ -1798,15 +1789,6 @@ button {
     font-size: 10px;
     font-weight: 700;
     margin-top: 5px;
-    box-shadow: 0 10px 40px rgba(124,58,237,.2);
-}
-
-.send-btn:hover {
-    box-shadow: 0 10px 50px rgba(168,85,247,.5);
-}
-
-.send-btn b {
-    font-size: 17px;
 }
 
 #formStatus {
@@ -1850,6 +1832,8 @@ footer p {
 .footer-links a {
     color: #8b8492;
     font: 8px monospace;
+    position: relative;
+    z-index: 5;
 }
 
 .footer-links a:hover {
@@ -1899,18 +1883,16 @@ footer p {
     height: 35px;
     border: 1px solid rgba(168,85,247,.7);
     border-radius: 50%;
-    transition: width .25s,height .25s,border-color .25s;
 }
 
 body.hovering .cursor-ring {
     width: 60px;
     height: 60px;
     border-color: #d084ff;
-    background: rgba(168,85,247,.05);
 }
 
 
-/* TOP BUTTON */
+/* TOP */
 
 #topBtn {
     position: fixed;
@@ -1934,7 +1916,7 @@ body.hovering .cursor-ring {
 }
 
 
-/* RESPONSIVE */
+/* MOBILE */
 
 @media(max-width:1100px) {
 
@@ -1943,7 +1925,7 @@ body.hovering .cursor-ring {
     }
 
     .navbar nav a {
-        padding: 8px 8px;
+        padding: 8px;
         font-size: 8px;
     }
 
@@ -1966,6 +1948,7 @@ body.hovering .cursor-ring {
     }
 }
 
+
 @media(max-width:800px) {
 
     .navbar {
@@ -1974,13 +1957,37 @@ body.hovering .cursor-ring {
     }
 
     .brand-info,
-    .navbar nav,
     .connect-btn {
         display: none;
     }
 
     .menu-btn {
         display: block;
+    }
+
+    .navbar nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 12px;
+        display: none;
+        flex-direction: column;
+        background: rgba(5,4,12,.97);
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 20px;
+        backdrop-filter: blur(25px);
+    }
+
+    .navbar nav.mobile-open {
+        display: flex;
+    }
+
+    .navbar nav a {
+        width: 100%;
+        padding: 13px;
+        text-align: center;
+        font-size: 11px;
     }
 
     .hero {
@@ -2043,10 +2050,6 @@ body.hovering .cursor-ring {
         height: 520px;
     }
 
-    .skill-node {
-        transform: scale(.85);
-    }
-
     .contact-section {
         gap: 50px;
     }
@@ -2058,7 +2061,13 @@ body.hovering .cursor-ring {
     .footer-links {
         margin-left: 0;
     }
+
+    .cursor,
+    .cursor-ring {
+        display: none;
+    }
 }
+
 
 @media(max-width:520px) {
 
@@ -2164,13 +2173,26 @@ body.hovering .cursor-ring {
         letter-spacing: -3px;
     }
 
-    .cursor,
-    .cursor-ring {
-        display: none;
+    .contact-details {
+        z-index: 100;
+    }
+
+    .contact-details a {
+        min-height: 35px;
+    }
+
+    .contact-details strong {
+        font-size: 10px;
+    }
+
+    footer {
+        gap: 15px;
     }
 }
 
+
 @media(prefers-reduced-motion:reduce) {
+
     *,
     *::before,
     *::after {
