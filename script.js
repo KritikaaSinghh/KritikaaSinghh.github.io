@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const ctx = canvas.getContext("2d");
 
-        let width;
-        let height;
+        let width = 0;
+        let height = 0;
         let stars = [];
 
         function resizeCanvas() {
@@ -21,7 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const amount = Math.min(
                 180,
-                Math.floor((width * height) / 9000)
+                Math.max(
+                    50,
+                    Math.floor((width * height) / 10000)
+                )
             );
 
             stars = Array.from(
@@ -29,23 +32,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 () => ({
                     x: Math.random() * width,
                     y: Math.random() * height,
-                    size: Math.random() * 1.5 + .2,
-                    speed: Math.random() * .25 + .05,
-                    alpha: Math.random() * .7 + .2,
-                    twinkle: Math.random() * .03
+                    size: Math.random() * 1.5 + 0.2,
+                    speed: Math.random() * 0.25 + 0.05,
+                    alpha: Math.random() * 0.7 + 0.2,
+                    twinkle: Math.random() * 0.03
                 })
             );
         }
-
-        resizeCanvas();
-
-        window.addEventListener("resize", resizeCanvas);
 
         function drawStars() {
 
             ctx.clearRect(0, 0, width, height);
 
-            stars.forEach(star => {
+            for (const star of stars) {
 
                 star.y -= star.speed;
 
@@ -56,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 star.alpha += star.twinkle;
 
-                if (star.alpha > .95 || star.alpha < .15) {
+                if (star.alpha > 0.95 || star.alpha < 0.15) {
                     star.twinkle *= -1;
                 }
 
@@ -74,11 +73,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     `rgba(190,140,255,${star.alpha})`;
 
                 ctx.fill();
-
-            });
+            }
 
             requestAnimationFrame(drawStars);
         }
+
+        resizeCanvas();
+
+        window.addEventListener(
+            "resize",
+            resizeCanvas,
+            { passive: true }
+        );
 
         drawStars();
     }
@@ -93,26 +99,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
-
     let ringX = mouseX;
     let ringY = mouseY;
 
-    window.addEventListener("mousemove", e => {
+    window.addEventListener("mousemove", event => {
 
-        mouseX = e.clientX;
-        mouseY = e.clientY;
+        mouseX = event.clientX;
+        mouseY = event.clientY;
 
         if (cursor) {
             cursor.style.left = `${mouseX}px`;
             cursor.style.top = `${mouseY}px`;
         }
-
     });
 
     function animateCursor() {
 
-        ringX += (mouseX - ringX) * .13;
-        ringY += (mouseY - ringY) * .13;
+        ringX += (mouseX - ringX) * 0.13;
+        ringY += (mouseY - ringY) * 0.13;
 
         if (cursorRing) {
             cursorRing.style.left = `${ringX}px`;
@@ -126,7 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     document
-        .querySelectorAll("a, button, .project-card, .skill-node")
+        .querySelectorAll(
+            "a, button, .project-card, .skill-node, .cert-card"
+        )
         .forEach(element => {
 
             element.addEventListener("mouseenter", () => {
@@ -136,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
             element.addEventListener("mouseleave", () => {
                 document.body.classList.remove("hovering");
             });
-
         });
 
 
@@ -144,19 +149,20 @@ document.addEventListener("DOMContentLoaded", () => {
        HERO PARALLAX
     ========================================== */
 
-    const heroVisual = document.querySelector(".hero-visual");
+    const heroVisual =
+        document.querySelector(".hero-visual");
 
-    window.addEventListener("mousemove", e => {
+    window.addEventListener("mousemove", event => {
 
         if (!heroVisual || window.innerWidth < 800) {
             return;
         }
 
         const x =
-            e.clientX / window.innerWidth - .5;
+            event.clientX / window.innerWidth - 0.5;
 
         const y =
-            e.clientY / window.innerHeight - .5;
+            event.clientY / window.innerHeight - 0.5;
 
         heroVisual.style.setProperty(
             "--mx",
@@ -167,7 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "--my",
             `${y * 18}px`
         );
-
     });
 
 
@@ -179,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .querySelectorAll("[data-tilt]")
         .forEach(card => {
 
-            card.addEventListener("mousemove", e => {
+            card.addEventListener("mousemove", event => {
 
                 if (window.innerWidth < 800) {
                     return;
@@ -189,16 +194,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     card.getBoundingClientRect();
 
                 const x =
-                    e.clientX - rect.left;
+                    event.clientX - rect.left;
 
                 const y =
-                    e.clientY - rect.top;
+                    event.clientY - rect.top;
 
                 const rotateX =
-                    ((y / rect.height) - .5) * -10;
+                    ((y / rect.height) - 0.5) * -10;
 
                 const rotateY =
-                    ((x / rect.width) - .5) * 10;
+                    ((x / rect.width) - 0.5) * 10;
 
                 card.style.transform =
                     `perspective(900px)
@@ -207,11 +212,9 @@ document.addEventListener("DOMContentLoaded", () => {
                      translateZ(10px)`;
             });
 
-
             card.addEventListener("mouseleave", () => {
                 card.style.transform = "";
             });
-
         });
 
 
@@ -223,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .querySelectorAll(".magnetic")
         .forEach(button => {
 
-            button.addEventListener("mousemove", e => {
+            button.addEventListener("mousemove", event => {
 
                 if (window.innerWidth < 800) {
                     return;
@@ -233,24 +236,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     button.getBoundingClientRect();
 
                 const x =
-                    e.clientX -
+                    event.clientX -
                     rect.left -
                     rect.width / 2;
 
                 const y =
-                    e.clientY -
+                    event.clientY -
                     rect.top -
                     rect.height / 2;
 
                 button.style.transform =
-                    `translate(${x * .12}px, ${y * .12}px)`;
+                    `translate(${x * 0.12}px, ${y * 0.12}px)`;
             });
-
 
             button.addEventListener("mouseleave", () => {
                 button.style.transform = "";
             });
-
         });
 
 
@@ -258,39 +259,47 @@ document.addEventListener("DOMContentLoaded", () => {
        SCROLL REVEAL
     ========================================== */
 
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
+    const revealElements =
+        document.querySelectorAll(".reveal");
 
-                entries.forEach(entry => {
+    if ("IntersectionObserver" in window) {
 
-                    if (entry.isIntersecting) {
+        const revealObserver =
+            new IntersectionObserver(
+                entries => {
 
-                        entry.target.classList.add("show");
+                    entries.forEach(entry => {
 
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-                    }
+                        if (entry.isIntersecting) {
 
-                });
+                            entry.target.classList.add("show");
 
-            },
-            {
-                threshold: .12
-            }
-        );
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+                        }
+                    });
 
+                },
+                {
+                    threshold: 0.12
+                }
+            );
 
-    document
-        .querySelectorAll(".reveal")
-        .forEach(element => {
+        revealElements.forEach(element => {
             revealObserver.observe(element);
         });
 
+    } else {
+
+        revealElements.forEach(element => {
+            element.classList.add("show");
+        });
+    }
+
 
     /* ==========================================
-       NAV ACTIVE
+       NAV ACTIVE STATE
     ========================================== */
 
     const sections =
@@ -299,41 +308,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks =
         document.querySelectorAll(".navbar nav a");
 
-    const sectionObserver =
-        new IntersectionObserver(
-            entries => {
+    if ("IntersectionObserver" in window) {
 
-                entries.forEach(entry => {
+        const sectionObserver =
+            new IntersectionObserver(
+                entries => {
 
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
+                    entries.forEach(entry => {
 
-                    navLinks.forEach(link => {
-
-                        link.classList.remove("active");
-
-                        if (
-                            link.getAttribute("href") ===
-                            `#${entry.target.id}`
-                        ) {
-                            link.classList.add("active");
+                        if (!entry.isIntersecting) {
+                            return;
                         }
+
+                        navLinks.forEach(link => {
+
+                            link.classList.remove("active");
+
+                            if (
+                                link.getAttribute("href") ===
+                                `#${entry.target.id}`
+                            ) {
+                                link.classList.add("active");
+                            }
+                        });
 
                     });
 
-                });
+                },
+                {
+                    threshold: 0.35
+                }
+            );
 
-            },
-            {
-                threshold: .35
-            }
-        );
-
-
-    sections.forEach(section => {
-        sectionObserver.observe(section);
-    });
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    }
 
 
     /* ==========================================
@@ -352,11 +362,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             event.stopPropagation();
 
-            mainNav.classList.toggle(
-                "mobile-open"
+            const isOpen =
+                mainNav.classList.toggle("mobile-open");
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                String(isOpen)
             );
         });
-
 
         mainNav
             .querySelectorAll("a")
@@ -368,37 +381,42 @@ document.addEventListener("DOMContentLoaded", () => {
                         "mobile-open"
                     );
 
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
                 });
-
             });
 
-
-        document.addEventListener("click", e => {
+        document.addEventListener("click", event => {
 
             if (
-                !mainNav.contains(e.target) &&
-                !menuBtn.contains(e.target)
+                !mainNav.contains(event.target) &&
+                !menuBtn.contains(event.target)
             ) {
+
                 mainNav.classList.remove(
                     "mobile-open"
                 );
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
             }
-
         });
-
     }
 
 
     /* ==========================================
-       SMOOTH INTERNAL LINKS ONLY
-       External GitHub / LinkedIn are untouched.
+       SMOOTH INTERNAL LINKS
     ========================================== */
 
     document
         .querySelectorAll('a[href^="#"]')
         .forEach(link => {
 
-            link.addEventListener("click", e => {
+            link.addEventListener("click", event => {
 
                 const targetId =
                     link.getAttribute("href");
@@ -417,15 +435,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-                e.preventDefault();
+                event.preventDefault();
 
                 target.scrollIntoView({
                     behavior: "smooth",
                     block: "start"
                 });
-
             });
-
         });
 
 
@@ -446,8 +462,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 topBtn.classList.remove("show");
             }
 
-        });
-
+        }, { passive: true });
 
         topBtn.addEventListener("click", () => {
 
@@ -455,15 +470,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 top: 0,
                 behavior: "smooth"
             });
-
         });
-
     }
 
 
     /* ==========================================
        CONTACT FORM
-       FORM SUBMIT AJAX
     ========================================== */
 
     const contactForm =
@@ -472,29 +484,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const formStatus =
         document.getElementById("formStatus");
 
-
-    if (contactForm) {
+    if (contactForm && formStatus) {
 
         contactForm.addEventListener(
             "submit",
-            async e => {
+            async event => {
 
-                e.preventDefault();
+                event.preventDefault();
 
                 const submitButton =
                     contactForm.querySelector(
                         "button[type='submit']"
                     );
 
+                if (!submitButton) {
+                    return;
+                }
+
                 const buttonText =
                     submitButton.querySelector("span");
 
-                buttonText.textContent = "Sending...";
+                if (!buttonText) {
+                    return;
+                }
+
+                buttonText.textContent =
+                    "Sending...";
 
                 submitButton.disabled = true;
 
                 formStatus.textContent = "";
-
+                formStatus.style.color = "#70e0b0";
 
                 const formData =
                     new FormData(contactForm);
@@ -504,7 +524,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         formData.entries()
                     );
 
-
                 try {
 
                     const response =
@@ -513,7 +532,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             {
                                 method: "POST",
                                 headers: {
-                                    "Accept":
+                                    Accept:
                                         "application/json",
                                     "Content-Type":
                                         "application/json"
@@ -523,18 +542,15 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
                         );
 
-
                     const result =
                         await response.json();
-
 
                     if (!response.ok) {
                         throw new Error(
                             result.message ||
-                            "Failed"
+                            "Failed to send message."
                         );
                     }
-
 
                     buttonText.textContent =
                         "Message Sent ✓";
@@ -542,11 +558,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     formStatus.textContent =
                         "Thanks! Your message has been sent successfully.";
 
-                    formStatus.style.color =
-                        "#70e0b0";
-
                     contactForm.reset();
-
 
                     setTimeout(() => {
 
@@ -557,7 +569,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             false;
 
                     }, 2500);
-
 
                 } catch (error) {
 
@@ -573,10 +584,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     formStatus.style.color =
                         "#ff7b9c";
                 }
-
             }
         );
-
     }
 
 
@@ -601,7 +610,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.body.appendChild(progress);
 
-
     window.addEventListener("scroll", () => {
 
         const scrollTop =
@@ -619,7 +627,7 @@ document.addEventListener("DOMContentLoaded", () => {
         progress.style.width =
             `${percentage}%`;
 
-    });
+    }, { passive: true });
 
 
     /* ==========================================
@@ -631,8 +639,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .forEach((bar, index) => {
 
             bar.style.animationDelay =
-                `${index * .12}s`;
-
+                `${index * 0.12}s`;
         });
 
 
@@ -641,9 +648,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================== */
 
     const heroName =
-        document.querySelector(
-            ".hero-title strong"
-        );
+        document.querySelector(".hero-title strong");
 
     if (heroName) {
 
@@ -652,7 +657,7 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
                 heroName.style.textShadow =
-                    "3px 0 #d946ef,-3px 0 #63e6ff";
+                    "3px 0 #d946ef, -3px 0 #63e6ff";
 
                 setTimeout(() => {
 
@@ -660,10 +665,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         "";
 
                 }, 180);
-
             }
         );
-
     }
 
 });
