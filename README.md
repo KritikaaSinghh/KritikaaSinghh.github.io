@@ -150,7 +150,47 @@ An interactive web application that demonstrates popular sorting algorithms thro
 https://github.com/KritikaaSinghh/Sorting-Visualizer
 
 **Live Demo:**  
-https://kritikaaSinghh.github.io/Sorting-Visualizer/
+https://kritikaasinghh.github.io/Sorting-Visualizer/
+
+---
+
+## 📔 Journal App
+
+A full-stack personal journaling application built using **Java, Spring Boot, Spring Security and MongoDB**.
+
+The application allows users to manage their daily journal entries, track moods, organize memories, save favorite entries and explore their journaling activity through an interactive dashboard.
+
+### 🛠️ Technologies
+
+- Java
+- Spring Boot
+- Spring Security
+- Spring Data MongoDB
+- MongoDB
+- HTML
+- CSS
+- JavaScript
+- Maven
+
+### ✨ Features
+
+- 🔐 User Registration and Login
+- 📝 Create, Read, Update and Delete Journal Entries
+- 😊 Mood Tracking and Mood Analytics
+- 🏷️ Categories and Tags Management
+- 🔍 Search and Filter Journal Entries
+- ⭐ Favorites and Memories
+- 📅 Interactive Calendar View
+- 📊 Dashboard and Analytics
+- 🌙 Light and Dark Mode
+
+### 🔗 Links
+
+**Repository:**  
+https://github.com/KritikaaSinghh/journal-app
+
+**Screenshots:**  
+https://github.com/KritikaaSinghh/journal-app/tree/main/Screenshots
 
 ---
 
